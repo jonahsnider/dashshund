@@ -1,6 +1,8 @@
 {
 	"name": "dashshund",
 	"version": "1.0.0",
+	"description": "FRC dashboard for Team 581",
+	"author": "Team 581",
 	"private": true,
 	"main": "./out/main/index.js",
 	"scripts": {
@@ -9,7 +11,8 @@
 		"preview": "electron-vite preview",
 		"package": "electron-vite build && electron-builder",
 		"lint": "biome check",
-		"lint:fix": "biome check --write --unsafe"
+		"lint:fix": "biome check --write --unsafe",
+		"generate-icons": "pwa-assets-generator"
 	},
 	"dependencies": {
 		"@tailwindcss/vite": "^4.2.1",
@@ -21,6 +24,7 @@
 		"@biomejs/biome": "2.3.11",
 		"@electron-toolkit/tsconfig": "^1.0.1",
 		"@electron-toolkit/utils": "^4.0.0",
+		"@vite-pwa/assets-generator": "^1.0.2",
 		"electron": "^33.3.1",
 		"electron-builder": "^25.1.8",
 		"electron-vite": "^3.0.0",
@@ -35,13 +39,21 @@
 			"output": "dist"
 		},
 		"mac": {
+			"icon": "build/icon-1024x1024.png",
 			"target": [
 				"dmg"
 			]
 		},
 		"win": {
+			"icon": "build/icon-1024x1024.png",
 			"target": [
 				"nsis"
+			]
+		},
+		"linux": {
+			"icon": "build/icon-1024x1024.png",
+			"target": [
+				"AppImage"
 			]
 		}
 	},
