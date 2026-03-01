@@ -6,12 +6,16 @@ function createWindow(): void {
 	const mainWindow = new BrowserWindow({
 		width: 1280,
 		height: 720,
+		show: false,
 		title: 'Dashshund',
 		webPreferences: {
 			preload: join(__dirname, '../preload/index.js'),
 			sandbox: false,
 		},
 	});
+
+	mainWindow.maximize();
+	mainWindow.show();
 
 	mainWindow.webContents.setWindowOpenHandler((details) => {
 		shell.openExternal(details.url);
