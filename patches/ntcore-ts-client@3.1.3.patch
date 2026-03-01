@@ -1,0 +1,13 @@
+diff --git a/src/lib/types/schemas.js b/src/lib/types/schemas.js
+index bae943fbd415e08fa55a70a2b93c4f7e36b532a9..12545dd1a5a907609d624fffe8a1eae856077e37 100644
+--- a/src/lib/types/schemas.js
++++ b/src/lib/types/schemas.js
+@@ -166,7 +166,7 @@ exports.msgPackValueSchema = zod_1.z.union([
+ /** Schema for a binary message in the msgpack format. */
+ exports.msgPackSchema = zod_1.z.tuple([
+     zod_1.z.union([zod_1.z.number().int().nonnegative(), zod_1.z.literal(-1)]),
+-    zod_1.z.number().int().nonnegative(),
++    zod_1.z.number().int(),
+     exports.typeNumSchema,
+     exports.msgPackValueSchema,
+ ]);
