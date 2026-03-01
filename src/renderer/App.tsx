@@ -39,7 +39,7 @@ const App: Component = () => {
       </header>
 
       <main class="flex-1 flex items-center justify-center overflow-hidden">
-        <CameraStream url={streamUrl()} onStatusChange={setStreamStatus} />
+        <CameraStream url={streamUrl()} ntConnected={ntConnected()} onStatusChange={setStreamStatus} />
       </main>
 
       <footer class="px-3 py-2 bg-[#252525] border-t border-[#333] shrink-0">
