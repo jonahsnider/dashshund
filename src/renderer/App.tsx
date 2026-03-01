@@ -1,52 +1,47 @@
-import { createSignal, createEffect, on, onCleanup, type Component } from "solid-js";
-import { NetworkTables } from "ntcore-ts-client";
-import { createNTConnection } from "./lib/nt.ts";
-import { createCameraDiscovery } from "./lib/cameras.ts";
-import CameraStream, { type StreamStatus } from "./components/CameraStream.tsx";
-import CameraSelect from "./components/CameraSelect.tsx";
-import ConnectionStatus from "./components/ConnectionStatus.tsx";
-import Settings, { loadTeamNumber } from "./components/Settings.tsx";
+import { NetworkTables } from 'ntcore-ts-client';
+import { type Component, createEffect, createSignal, on } from 'solid-js';
+import CameraSelect from './components/CameraSelect.tsx';
+import CameraStream, { type StreamStatus } from './components/CameraStream.tsx';
+import ConnectionStatus from './components/ConnectionStatus.tsx';
+import Settings, { loadTeamNumber } from './components/Settings.tsx';
+import { createCameraDiscovery } from './lib/cameras.ts';
+import { createNTConnection } from './lib/nt.ts';
 
 const App: Component = () => {
-  const [teamNumber, setTeamNumber] = createSignal(loadTeamNumber());
-  const [nt, setNt] = createSignal<NetworkTables>(
-    NetworkTables.getInstanceByTeam(teamNumber()),
-  );
-  const [streamUrl, setStreamUrl] = createSignal<string | undefined>();
-  const [streamStatus, setStreamStatus] = createSignal<StreamStatus>("disconnected");
+	const [teamNumber, setTeamNumber] = createSignal(loadTeamNumber());
+	const [nt, setNt] = createSignal<NetworkTables>(NetworkTables.getInstanceByTeam(teamNumber()));
+	const [streamUrl, setStreamUrl] = createSignal<string | undefined>();
+	const [streamStatus, setStreamStatus] = createSignal<StreamStatus>('disconnected');
 
-  const ntConnected = createNTConnection(nt());
-  const cameras = createCameraDiscovery(nt());
+	const ntConnected = createNTConnection(nt());
+	const cameras = createCameraDiscovery(nt());
 
-  // Reconnect NT4 when team number changes
-  createEffect(
-    on(teamNumber, (team, prevTeam) => {
-      if (prevTeam !== undefined && team !== prevTeam) {
-        const instance = NetworkTables.getInstanceByTeam(team);
-        setNt(instance);
-      }
-    }),
-  );
+	// Reconnect NT4 when team number changes
+	createEffect(
+		on(teamNumber, (team, prevTeam) => {
+			if (prevTeam !== undefined && team !== prevTeam) {
+				const instance = NetworkTables.getInstanceByTeam(team);
+				setNt(instance);
+			}
+		}),
+	);
 
-  return (
-    <div class="flex flex-col h-full">
-      <header class="flex items-center justify-between px-3 py-2 bg-[#252525] border-b border-[#333] gap-3 shrink-0">
-        <Settings onTeamChange={setTeamNumber} />
-        <ConnectionStatus
-          ntConnected={ntConnected()}
-          streamStatus={streamStatus()}
-        />
-      </header>
+	return (
+		<div class='flex flex-col h-full'>
+			<header class='flex items-center justify-between px-3 py-2 bg-[#252525] border-b border-[#333] gap-3 shrink-0'>
+				<Settings onTeamChange={setTeamNumber} />
+				<ConnectionStatus ntConnected={ntConnected()} streamStatus={streamStatus()} />
+			</header>
 
-      <main class="flex-1 flex items-center justify-center overflow-hidden">
-        <CameraStream url={streamUrl()} ntConnected={ntConnected()} onStatusChange={setStreamStatus} />
-      </main>
+			<main class='flex-1 flex items-center justify-center overflow-hidden'>
+				<CameraStream url={streamUrl()} ntConnected={ntConnected()} onStatusChange={setStreamStatus} />
+			</main>
 
-      <footer class="px-3 py-2 bg-[#252525] border-t border-[#333] shrink-0">
-        <CameraSelect cameras={cameras()} onSelect={setStreamUrl} />
-      </footer>
-    </div>
-  );
+			<footer class='px-3 py-2 bg-[#252525] border-t border-[#333] shrink-0'>
+				<CameraSelect cameras={cameras()} onSelect={setStreamUrl} />
+			</footer>
+		</div>
+	);
 };
 
 export default App;

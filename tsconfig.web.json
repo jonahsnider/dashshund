@@ -1,9 +1,9 @@
 {
-  "extends": "@electron-toolkit/tsconfig/tsconfig.web.json",
-  "include": ["src/renderer/**/*"],
-  "compilerOptions": {
-    "composite": true,
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js"
-  }
+	"extends": "@electron-toolkit/tsconfig/tsconfig.web.json",
+	"include": ["src/renderer/**/*"],
+	"compilerOptions": {
+		"composite": true,
+		"jsx": "preserve",
+		"jsxImportSource": "solid-js"
+	}
 }
