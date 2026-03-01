@@ -49,12 +49,6 @@
 			"target": [
 				"nsis"
 			]
-		},
-		"linux": {
-			"icon": "build/icon-1024x1024.png",
-			"target": [
-				"AppImage"
-			]
 		}
 	},
 	"patchedDependencies": {
