@@ -1,4 +1,5 @@
 import { defineConfig, externalizeDepsPlugin } from "electron-vite";
+import tailwindcss from "@tailwindcss/vite";
 import solidPlugin from "vite-plugin-solid";
 
 export default defineConfig({
@@ -9,6 +10,6 @@ export default defineConfig({
     plugins: [externalizeDepsPlugin()],
   },
   renderer: {
-    plugins: [solidPlugin()],
+    plugins: [tailwindcss(), solidPlugin()],
   },
 });

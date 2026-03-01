@@ -64,8 +64,8 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
   });
 
   return (
-    <div class="camera-select">
-      <label>
+    <div class="flex items-center gap-2 text-[13px]">
+      <label class="flex items-center gap-1 whitespace-nowrap">
         <input
           type="checkbox"
           checked={useManual()}
@@ -82,6 +82,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
             placeholder="http://10.5.81.11:5800/stream.mjpg"
             value={manualUrl()}
             onInput={(e) => setManualUrl(e.currentTarget.value)}
+            class="flex-1 px-1.5 py-1 bg-[#333] border border-[#555] rounded text-[#e0e0e0] text-[13px] min-w-[200px]"
           />
         }
       >
@@ -91,6 +92,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
             setSelectedCamera(e.currentTarget.value);
             setUrlIndex(0);
           }}
+          class="px-1.5 py-1 bg-[#333] border border-[#555] rounded text-[#e0e0e0] text-[13px] min-w-[200px]"
         >
           <option value="" disabled>
             Select camera...
@@ -108,6 +110,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
                 onChange={(e) =>
                   setUrlIndex(Number(e.currentTarget.value))
                 }
+                class="px-1.5 py-1 bg-[#333] border border-[#555] rounded text-[#e0e0e0] text-[13px] min-w-[200px]"
               >
                 <For each={cam().urls}>
                   {(url, i) => <option value={i()}>{url}</option>}

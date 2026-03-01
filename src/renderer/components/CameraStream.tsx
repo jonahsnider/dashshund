@@ -54,11 +54,12 @@ const CameraStream: Component<CameraStreamProps> = (props) => {
   );
 
   return (
-    <div class="camera-stream">
+    <div class="relative w-full h-full flex items-center justify-center">
       {imgSrc() ? (
         <img
           src={imgSrc()}
           alt="Camera stream"
+          class="w-full h-full object-contain"
           onLoad={() => {
             retryMs = INITIAL_RETRY_MS;
             updateStatus("connected");
@@ -71,10 +72,10 @@ const CameraStream: Component<CameraStreamProps> = (props) => {
           }}
         />
       ) : (
-        <div class="camera-placeholder">No camera URL</div>
+        <div class="text-[#666] text-lg">No camera URL</div>
       )}
       {status() !== "connected" && imgSrc() && (
-        <div class="camera-overlay">{status()}</div>
+        <div class="absolute top-2 right-2 px-2.5 py-1 bg-black/70 rounded text-xs capitalize">{status()}</div>
       )}
     </div>
   );

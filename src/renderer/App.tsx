@@ -29,8 +29,8 @@ const App: Component = () => {
   );
 
   return (
-    <div class="app">
-      <header>
+    <div class="flex flex-col h-full">
+      <header class="flex items-center justify-between px-3 py-2 bg-[#252525] border-b border-[#333] gap-3 shrink-0">
         <Settings onTeamChange={setTeamNumber} />
         <ConnectionStatus
           ntConnected={ntConnected()}
@@ -38,11 +38,11 @@ const App: Component = () => {
         />
       </header>
 
-      <main>
+      <main class="flex-1 flex items-center justify-center overflow-hidden">
         <CameraStream url={streamUrl()} onStatusChange={setStreamStatus} />
       </main>
 
-      <footer>
+      <footer class="px-3 py-2 bg-[#252525] border-t border-[#333] shrink-0">
         <CameraSelect cameras={cameras()} onSelect={setStreamUrl} />
       </footer>
     </div>

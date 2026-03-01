@@ -8,23 +8,20 @@ interface ConnectionStatusProps {
 
 const ConnectionStatus: Component<ConnectionStatusProps> = (props) => {
   return (
-    <div class="connection-status">
+    <div class="flex items-center gap-1.5 text-xs">
       <span
-        class="status-dot"
-        classList={{
-          connected: props.ntConnected,
-          disconnected: !props.ntConnected,
-        }}
+        class={`w-2 h-2 rounded-full inline-block ${props.ntConnected ? "bg-green-500" : "bg-red-500"}`}
       />
       <span>NT4: {props.ntConnected ? "Connected" : "Disconnected"}</span>
 
       <span
-        class="status-dot"
-        classList={{
-          connected: props.streamStatus === "connected",
-          reconnecting: props.streamStatus === "reconnecting",
-          disconnected: props.streamStatus === "disconnected",
-        }}
+        class={`w-2 h-2 rounded-full inline-block ${
+          props.streamStatus === "connected"
+            ? "bg-green-500"
+            : props.streamStatus === "reconnecting"
+              ? "bg-yellow-500 animate-pulse"
+              : "bg-red-500"
+        }`}
       />
       <span>Stream: {props.streamStatus}</span>
     </div>
