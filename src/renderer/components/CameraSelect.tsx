@@ -1,3 +1,4 @@
+import { makePersisted } from '@solid-primitives/storage';
 import { type Component, createEffect, createSignal, For, Show } from 'solid-js';
 import type { CameraInfo } from '../lib/cameras.ts';
 
@@ -6,26 +7,11 @@ interface CameraSelectProps {
 	onSelect: (url: string | undefined) => void;
 }
 
-const STORAGE_KEY = 'dashshund-camera-selection';
-
-function loadSelection(): { camera: string; urlIndex: number; manualUrl: string } {
-	try {
-		const raw = localStorage.getItem(STORAGE_KEY);
-		if (raw) return JSON.parse(raw);
-	} catch {}
-	return { camera: '', urlIndex: 0, manualUrl: '' };
-}
-
-function saveSelection(camera: string, urlIndex: number, manualUrl: string) {
-	localStorage.setItem(STORAGE_KEY, JSON.stringify({ camera, urlIndex, manualUrl }));
-}
-
 const CameraSelect: Component<CameraSelectProps> = (props) => {
-	const saved = loadSelection();
-	const [selectedCamera, setSelectedCamera] = createSignal(saved.camera);
-	const [urlIndex, setUrlIndex] = createSignal(saved.urlIndex);
-	const [manualUrl, setManualUrl] = createSignal(saved.manualUrl);
-	const [useManual, setUseManual] = createSignal(saved.camera === '__manual__');
+	const [selectedCamera, setSelectedCamera] = makePersisted(createSignal(''), { name: 'dashshund-camera' });
+	const [urlIndex, setUrlIndex] = makePersisted(createSignal(0), { name: 'dashshund-camera-url-index' });
+	const [manualUrl, setManualUrl] = makePersisted(createSignal(''), { name: 'dashshund-camera-manual-url' });
+	const [useManual, setUseManual] = makePersisted(createSignal(false), { name: 'dashshund-camera-use-manual' });
 
 	// Emit URL when selection changes
 	createEffect(() => {
@@ -33,11 +19,9 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 
 		if (useManual()) {
 			url = manualUrl() || undefined;
-			saveSelection('__manual__', 0, manualUrl());
 		} else {
 			const cam = props.cameras.find((c) => c.name === selectedCamera());
 			url = cam?.urls[urlIndex()] ?? cam?.urls[0];
-			saveSelection(selectedCamera(), urlIndex(), manualUrl());
 		}
 
 		props.onSelect(url);

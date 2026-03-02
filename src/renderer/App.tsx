@@ -1,16 +1,17 @@
+import { makePersisted } from '@solid-primitives/storage';
 import { NetworkTables } from 'ntcore-ts-client';
 import { type Component, createEffect, createSignal, on } from 'solid-js';
 import CameraSelect from './components/CameraSelect.tsx';
 import CameraStream, { type StreamStatus } from './components/CameraStream.tsx';
 import ConnectionStatus from './components/ConnectionStatus.tsx';
-import Settings, { loadTeamNumber } from './components/Settings.tsx';
+import Settings from './components/Settings.tsx';
 import { createCameraDiscovery } from './lib/cameras.ts';
 import { createNTConnection } from './lib/nt.ts';
 
 declare const __APP_VERSION__: string;
 
 const App: Component = () => {
-	const [teamNumber, setTeamNumber] = createSignal(loadTeamNumber());
+	const [teamNumber, setTeamNumber] = makePersisted(createSignal(581), { name: 'dashshund-team-number' });
 	const [nt, setNt] = createSignal<NetworkTables>(NetworkTables.getInstanceByTeam(teamNumber()));
 	const [streamUrl, setStreamUrl] = createSignal<string | undefined>();
 	const [streamStatus, setStreamStatus] = createSignal<StreamStatus>('disconnected');

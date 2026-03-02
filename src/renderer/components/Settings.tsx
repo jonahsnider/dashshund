@@ -1,24 +1,17 @@
+import { makePersisted } from '@solid-primitives/storage';
 import { type Component, createSignal } from 'solid-js';
-
-const TEAM_STORAGE_KEY = 'dashshund-team-number';
 
 interface SettingsProps {
 	onTeamChange: (team: number) => void;
 }
 
-export function loadTeamNumber(): number {
-	const stored = localStorage.getItem(TEAM_STORAGE_KEY);
-	return stored ? Number(stored) : 581;
-}
-
 const Settings: Component<SettingsProps> = (props) => {
-	const [team, setTeam] = createSignal(loadTeamNumber());
+	const [team, setTeam] = makePersisted(createSignal(581), { name: 'dashshund-team-number' });
 
 	function handleInput(e: InputEvent & { currentTarget: HTMLInputElement }) {
 		const num = Number(e.currentTarget.value);
-		setTeam(num);
 		if (num > 0) {
-			localStorage.setItem(TEAM_STORAGE_KEY, String(num));
+			setTeam(num);
 			props.onTeamChange(num);
 		}
 	}
