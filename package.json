@@ -22,7 +22,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.4",
-		"@electron-toolkit/tsconfig": "^1.0.1",
+		"@electron-toolkit/tsconfig": "^2.0.0",
 		"@electron-toolkit/utils": "^4.0.0",
 		"@vite-pwa/assets-generator": "^1.0.2",
 		"electron": "^33.3.1",
