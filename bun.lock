@@ -13,7 +13,7 @@
       },
       "devDependencies": {
         "@biomejs/biome": "2.4.4",
-        "@electron-toolkit/tsconfig": "^1.0.1",
+        "@electron-toolkit/tsconfig": "^2.0.0",
         "@electron-toolkit/utils": "^4.0.0",
         "@vite-pwa/assets-generator": "^1.0.2",
         "electron": "^33.3.1",
@@ -91,7 +91,7 @@
 
     "@develar/schema-utils": ["@develar/schema-utils@2.6.5", "", { "dependencies": { "ajv": "^6.12.0", "ajv-keywords": "^3.4.1" } }, "sha512-0cp4PsWQ/9avqTVMCtZ+GirikIA36ikvjtHweU4/j8yLtgObI0+JUPhYFScgwlteveGB1rt3Cm8UhN04XayDig=="],
 
-    "@electron-toolkit/tsconfig": ["@electron-toolkit/tsconfig@1.0.1", "", { "peerDependencies": { "@types/node": "*" } }, "sha512-M0Mol3odspvtCuheyujLNAW7bXq7KFNYVMRtpjFa4ZfES4MuklXBC7Nli/omvc+PRKlrklgAGx3l4VakjNo8jg=="],
+    "@electron-toolkit/tsconfig": ["@electron-toolkit/tsconfig@2.0.0", "", { "peerDependencies": { "@types/node": "*" } }, "sha512-AdPsP770WhW7b260h13SHMdmjEEHJL6xFtgi3jwgdsSQbJOkJLeNnnpZW9qxTPCvmRI6vmdzWz5K3gibFS6SNg=="],
 
     "@electron-toolkit/utils": ["@electron-toolkit/utils@4.0.0", "", { "peerDependencies": { "electron": ">=13.0.0" } }, "sha512-qXSntwEzluSzKl4z5yFNBknmPGjPa3zFhE4mp9+h0cgokY5ornAeP+CJQDBhKsL1S58aOQfcwkD3NwLZCl+64g=="],
 
