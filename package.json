@@ -22,7 +22,7 @@
 		"tailwindcss": "^4.2.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.4",
+		"@biomejs/biome": "2.4.5",
 		"@electron-toolkit/tsconfig": "^2.0.0",
 		"@electron-toolkit/utils": "^4.0.0",
 		"@vite-pwa/assets-generator": "^1.0.2",
