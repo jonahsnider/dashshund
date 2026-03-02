@@ -27,7 +27,7 @@
 		"@electron-toolkit/utils": "^4.0.0",
 		"@vite-pwa/assets-generator": "^1.0.2",
 		"electron": "^40.0.0",
-		"electron-builder": "^25.1.8",
+		"electron-builder": "^26.0.0",
 		"electron-vite": "^5.0.0",
 		"typescript": "^5.7.3",
 		"vite": "^6",
