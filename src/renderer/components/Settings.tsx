@@ -33,12 +33,12 @@ const Settings: Component<SettingsProps> = (props) => {
 					max='99999'
 					value={team()}
 					onInput={(e) => setTeam(Number(e.currentTarget.value))}
-					class='w-full px-1.5 py-1 bg-[#333] border border-[#555] rounded text-[#e0e0e0] text-[13px] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]'
+					class='w-full px-1.5 py-1 bg-surface-container-highest border border-outline rounded text-on-surface text-[13px] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]'
 				/>
 			</label>
 			<button
 				type='submit'
-				class='px-2.5 py-1 bg-[#2563eb] rounded text-white text-[13px] cursor-pointer hover:bg-[#1d4ed8]'
+				class='px-2.5 py-1 bg-primary rounded text-on-primary text-[13px] cursor-pointer hover:brightness-90'
 			>
 				Connect
 			</button>

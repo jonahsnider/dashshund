@@ -28,7 +28,7 @@ const App: Component = () => {
 
 	return (
 		<div class='flex h-full'>
-			<aside class='flex flex-col gap-3 px-3 py-2 bg-[#252525] border-r border-[#333] shrink-0'>
+			<aside class='flex flex-col gap-3 px-3 py-2 bg-surface-container border-r border-outline-variant shrink-0'>
 				<Settings onTeamChange={setTeamNumber} />
 				<ConnectionStatus ntConnected={ntConnected()} streamStatus={streamStatus()} />
 				<CameraSelect cameras={cameras()} onSelect={setStreamUrl} />

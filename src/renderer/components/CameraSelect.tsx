@@ -65,7 +65,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 						placeholder='http://10.5.81.11:5800/stream.mjpg'
 						value={manualUrl()}
 						onInput={(e) => setManualUrl(e.currentTarget.value)}
-						class='w-full px-1.5 py-1 bg-[#333] border border-[#555] rounded text-[#e0e0e0] text-[13px]'
+						class='w-full px-1.5 py-1 bg-surface-container-highest border border-outline rounded text-on-surface text-[13px]'
 					/>
 				}
 			>
@@ -75,7 +75,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 						setSelectedCamera(e.currentTarget.value);
 						setUrlIndex(0);
 					}}
-					class='w-full px-1.5 py-1 bg-[#333] border border-[#555] rounded text-[#e0e0e0] text-[13px]'
+					class='w-full px-1.5 py-1 bg-surface-container-highest border border-outline rounded text-on-surface text-[13px]'
 				>
 					<option value='' disabled>
 						Select camera...
@@ -89,7 +89,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 							<select
 								value={urlIndex()}
 								onChange={(e) => setUrlIndex(Number(e.currentTarget.value))}
-								class='w-full px-1.5 py-1 bg-[#333] border border-[#555] rounded text-[#e0e0e0] text-[13px]'
+								class='w-full px-1.5 py-1 bg-surface-container-highest border border-outline rounded text-on-surface text-[13px]'
 							>
 								<For each={cam().urls}>{(url, i) => <option value={i()}>{url}</option>}</For>
 							</select>
