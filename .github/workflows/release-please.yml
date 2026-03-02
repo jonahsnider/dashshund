@@ -29,7 +29,11 @@ jobs:
     if: ${{ needs.release-please.outputs.release_created }}
     strategy:
       matrix:
-        os: [macos-latest, windows-latest]
+        include:
+          - os: macos-latest
+            artifact: dist/*.dmg
+          - os: windows-latest
+            artifact: dist/*.exe
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     steps:
@@ -42,6 +46,6 @@ jobs:
       - name: Package
         run: bun run package -- --publish never
       - name: Upload artifacts to release
-        run: gh release upload ${{ needs.release-please.outputs.tag_name }} dist/*.dmg dist/*.exe
+        run: gh release upload ${{ needs.release-please.outputs.tag_name }} ${{ matrix.artifact }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
