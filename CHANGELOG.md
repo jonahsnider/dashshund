@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026.0.4](https://github.com/jonahsnider/dashshund/compare/v2026.0.3...v2026.0.4) (2026-03-02)
+
+
+### Bug Fixes
+
+* bump version ([18951ab](https://github.com/jonahsnider/dashshund/commit/18951abd3ba402bae401477a4b70c0cbd6fbb172))
+
 ## [2026.0.3](https://github.com/jonahsnider/dashshund/compare/v2026.0.2...v2026.0.3) (2026-03-02)
 
 
