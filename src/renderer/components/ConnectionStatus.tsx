@@ -24,7 +24,14 @@ const ConnectionStatus: Component<ConnectionStatusProps> = (props) => {
 								: 'bg-red-500'
 					}`}
 				/>
-				<span>Stream: {props.streamStatus}</span>
+				<span>
+					Stream:{' '}
+					{props.streamStatus === 'connected'
+						? 'Connected'
+						: props.streamStatus === 'reconnecting'
+							? 'Reconnecting'
+							: 'Disconnected'}
+				</span>
 			</div>
 		</div>
 	);
