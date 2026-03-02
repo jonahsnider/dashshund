@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026.0.2](https://github.com/jonahsnider/dashshund/compare/v2026.0.1...v2026.0.2) (2026-03-02)
+
+
+### Bug Fixes
+
+* disable electron-builder publishing ([86174aa](https://github.com/jonahsnider/dashshund/commit/86174aa0f9ea63effc8c881dac5ba94887b44d1a))
+
 ## [2026.0.1](https://github.com/jonahsnider/dashshund/compare/v2026.0.0...v2026.0.1) (2026-03-02)
 
 
