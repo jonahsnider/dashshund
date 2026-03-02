@@ -7,6 +7,7 @@ function createWindow(): void {
 		width: 1280,
 		height: 720,
 		show: false,
+		backgroundColor: '#1a1111',
 		title: 'Dashshund',
 		webPreferences: {
 			preload: join(__dirname, '../preload/index.js'),
@@ -14,8 +15,10 @@ function createWindow(): void {
 		},
 	});
 
-	mainWindow.maximize();
-	mainWindow.show();
+	mainWindow.once('ready-to-show', () => {
+		mainWindow.maximize();
+		mainWindow.show();
+	});
 
 	mainWindow.webContents.setWindowOpenHandler((details) => {
 		shell.openExternal(details.url);
