@@ -25,7 +25,7 @@ const Settings: Component<SettingsProps> = (props) => {
 
 	return (
 		<form class='flex flex-col gap-1.5' onSubmit={handleSubmit}>
-			<label class='flex flex-col gap-1 text-[13px]'>
+			<label class='flex flex-col gap-1 text-sm'>
 				Team #
 				<input
 					type='number'
@@ -33,12 +33,12 @@ const Settings: Component<SettingsProps> = (props) => {
 					max='99999'
 					value={team()}
 					onInput={(e) => setTeam(Number(e.currentTarget.value))}
-					class='w-full px-1.5 py-1 bg-surface-container-highest border border-outline rounded text-on-surface text-[13px] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]'
+					class='w-full px-1.5 py-1 bg-surface-container-highest border border-outline rounded text-on-surface text-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]'
 				/>
 			</label>
 			<button
 				type='submit'
-				class='px-2.5 py-1 bg-primary rounded text-on-primary text-[13px] cursor-pointer hover:brightness-90'
+				class='px-2.5 py-1 bg-primary rounded text-on-primary text-sm cursor-pointer hover:brightness-90'
 			>
 				Connect
 			</button>

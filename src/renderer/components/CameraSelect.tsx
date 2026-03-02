@@ -51,7 +51,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 	});
 
 	return (
-		<div class='flex flex-col gap-2 text-[13px]'>
+		<div class='flex flex-col gap-2 text-sm'>
 			<label class='flex items-center gap-1 whitespace-nowrap'>
 				<input type='checkbox' checked={useManual()} onChange={(e) => setUseManual(e.currentTarget.checked)} /> Manual
 				URL
@@ -65,7 +65,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 						placeholder='http://10.5.81.11:5800/stream.mjpg'
 						value={manualUrl()}
 						onInput={(e) => setManualUrl(e.currentTarget.value)}
-						class='w-full px-1.5 py-1 bg-surface-container-highest border border-outline rounded text-on-surface text-[13px]'
+						class='w-full px-1.5 py-1 bg-surface-container-highest border border-outline rounded text-on-surface text-sm'
 					/>
 				}
 			>
@@ -75,7 +75,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 						setSelectedCamera(e.currentTarget.value);
 						setUrlIndex(0);
 					}}
-					class='w-full px-1.5 py-1 bg-surface-container-highest border border-outline rounded text-on-surface text-[13px]'
+					class='w-full px-1.5 py-1 bg-surface-container-highest border border-outline rounded text-on-surface text-sm'
 				>
 					<option value='' disabled>
 						Select camera...
@@ -89,7 +89,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 							<select
 								value={urlIndex()}
 								onChange={(e) => setUrlIndex(Number(e.currentTarget.value))}
-								class='w-full px-1.5 py-1 bg-surface-container-highest border border-outline rounded text-on-surface text-[13px]'
+								class='w-full px-1.5 py-1 bg-surface-container-highest border border-outline rounded text-on-surface text-sm'
 							>
 								<For each={cam().urls}>{(url, i) => <option value={i()}>{url}</option>}</For>
 							</select>
