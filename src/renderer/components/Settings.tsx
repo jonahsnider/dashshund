@@ -14,9 +14,9 @@ export function loadTeamNumber(): number {
 const Settings: Component<SettingsProps> = (props) => {
 	const [team, setTeam] = createSignal(loadTeamNumber());
 
-	function handleSubmit(e: Event) {
-		e.preventDefault();
-		const num = team();
+	function handleInput(e: InputEvent & { currentTarget: HTMLInputElement }) {
+		const num = Number(e.currentTarget.value);
+		setTeam(num);
 		if (num > 0) {
 			localStorage.setItem(TEAM_STORAGE_KEY, String(num));
 			props.onTeamChange(num);
@@ -24,25 +24,17 @@ const Settings: Component<SettingsProps> = (props) => {
 	}
 
 	return (
-		<form class='flex flex-col gap-1.5' onSubmit={handleSubmit}>
-			<label class='flex flex-col gap-1 text-sm'>
-				Team #
-				<input
-					type='number'
-					min='1'
-					max='99999'
-					value={team()}
-					onInput={(e) => setTeam(Number(e.currentTarget.value))}
-					class='w-full px-1.5 py-1 bg-surface-container-highest border border-outline rounded text-on-surface text-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]'
-				/>
-			</label>
-			<button
-				type='submit'
-				class='px-2.5 py-1 bg-primary rounded text-on-primary text-sm cursor-pointer hover:brightness-90'
-			>
-				Connect
-			</button>
-		</form>
+		<label class='flex flex-col gap-1'>
+			<span class='text-[10px] uppercase tracking-wider text-on-surface-variant'>Team Number</span>
+			<input
+				type='number'
+				min='1'
+				max='99999'
+				value={team()}
+				onInput={handleInput}
+				class='w-full bg-transparent border-b border-outline py-2 text-sm text-on-surface outline-none focus:opacity-60 transition-opacity [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]'
+			/>
+		</label>
 	);
 };
 

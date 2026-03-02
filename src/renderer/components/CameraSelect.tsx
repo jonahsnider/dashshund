@@ -43,19 +43,49 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 		props.onSelect(url);
 	});
 
-	// Auto-select the first camera if none is selected
+	// Reset selection when the saved camera doesn't exist in the available list
 	createEffect(() => {
-		if (!useManual() && !selectedCamera() && props.cameras.length > 0) {
+		if (useManual() || !props.cameras.length) return;
+
+		const name = selectedCamera();
+		if (!name) {
+			// No selection — auto-select the first camera
 			setSelectedCamera(props.cameras[0]?.name);
+		} else if (!props.cameras.some((c) => c.name === name)) {
+			// Stale selection — reset to placeholder
+			setSelectedCamera('');
 		}
 	});
 
 	return (
-		<div class='flex flex-col gap-2 text-sm'>
-			<label class='flex items-center gap-1 whitespace-nowrap'>
-				<input type='checkbox' checked={useManual()} onChange={(e) => setUseManual(e.currentTarget.checked)} /> Manual
-				URL
-			</label>
+		<div class='flex flex-col gap-3'>
+			<span class='text-[10px] uppercase tracking-wider text-on-surface-variant'>Stream Source</span>
+
+			<div class='flex'>
+				<button
+					type='button'
+					class='flex-1 cursor-pointer py-2 text-sm uppercase tracking-wider border border-outline transition-colors rounded-l'
+					classList={{
+						'bg-secondary-container text-on-secondary-container': !useManual(),
+						'bg-transparent text-on-surface': useManual(),
+					}}
+					onClick={() => setUseManual(false)}
+				>
+					Hostname
+				</button>
+
+				<button
+					type='button'
+					class='flex-1 cursor-pointer py-2 text-sm uppercase tracking-wider border border-outline border-l-0 transition-colors rounded-r'
+					classList={{
+						'bg-secondary-container text-on-secondary-container': useManual(),
+						'bg-transparent text-on-surface': !useManual(),
+					}}
+					onClick={() => setUseManual(true)}
+				>
+					Manual IP
+				</button>
+			</div>
 
 			<Show
 				when={!useManual()}
@@ -65,7 +95,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 						placeholder='http://10.5.81.11:5800/stream.mjpg'
 						value={manualUrl()}
 						onInput={(e) => setManualUrl(e.currentTarget.value)}
-						class='w-full px-1.5 py-1 bg-surface-container-highest border border-outline rounded text-on-surface text-sm'
+						class='w-full bg-transparent border-b border-outline py-2 text-sm text-on-surface outline-none focus:opacity-60 transition-opacity'
 					/>
 				}
 			>
@@ -75,9 +105,9 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 						setSelectedCamera(e.currentTarget.value);
 						setUrlIndex(0);
 					}}
-					class='w-full px-1.5 py-1 bg-surface-container-highest border border-outline rounded text-on-surface text-sm'
+					class='w-full bg-surface-container border-b border-outline py-2 text-sm text-on-surface outline-none appearance-none cursor-pointer'
 				>
-					<option value='' disabled>
+					<option value='' disabled selected>
 						Select camera...
 					</option>
 					<For each={props.cameras}>{(cam) => <option value={cam.name}>{cam.name}</option>}</For>
@@ -89,7 +119,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 							<select
 								value={urlIndex()}
 								onChange={(e) => setUrlIndex(Number(e.currentTarget.value))}
-								class='w-full px-1.5 py-1 bg-surface-container-highest border border-outline rounded text-on-surface text-sm'
+								class='w-full bg-surface-container border-b border-outline py-2 text-sm text-on-surface outline-none appearance-none cursor-pointer'
 							>
 								<For each={cam().urls}>{(url, i) => <option value={i()}>{url}</option>}</For>
 							</select>

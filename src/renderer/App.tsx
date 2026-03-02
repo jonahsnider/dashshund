@@ -7,6 +7,8 @@ import Settings, { loadTeamNumber } from './components/Settings.tsx';
 import { createCameraDiscovery } from './lib/cameras.ts';
 import { createNTConnection } from './lib/nt.ts';
 
+declare const __APP_VERSION__: string;
+
 const App: Component = () => {
 	const [teamNumber, setTeamNumber] = createSignal(loadTeamNumber());
 	const [nt, setNt] = createSignal<NetworkTables>(NetworkTables.getInstanceByTeam(teamNumber()));
@@ -28,10 +30,18 @@ const App: Component = () => {
 
 	return (
 		<div class='flex h-full'>
-			<aside class='flex flex-col gap-3 px-3 py-2 bg-surface-container border-r border-outline-variant shrink-0'>
-				<Settings onTeamChange={setTeamNumber} />
+			<aside class='w-80 flex flex-col justify-between bg-surface-container border-r border-outline-variant shrink-0'>
+				<div class='flex flex-col gap-8 p-6'>
+					<div class='flex justify-between items-baseline uppercase tracking-wider font-bold text-sm'>
+						<span>Dashshund</span>
+						<span class='text-xs text-on-surface-variant font-normal'>v{__APP_VERSION__}</span>
+					</div>
+
+					<Settings onTeamChange={setTeamNumber} />
+					<CameraSelect cameras={cameras()} onSelect={setStreamUrl} />
+				</div>
+
 				<ConnectionStatus ntConnected={ntConnected()} streamStatus={streamStatus()} />
-				<CameraSelect cameras={cameras()} onSelect={setStreamUrl} />
 			</aside>
 
 			<main class='flex-1 flex items-center justify-center overflow-hidden'>

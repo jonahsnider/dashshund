@@ -135,6 +135,7 @@ const CameraStream: Component<CameraStreamProps> = (props) => {
 					src={imgSrc()}
 					alt='Camera stream'
 					class='w-full h-full object-contain'
+					classList={{ invisible: status() !== 'connected' }}
 					onLoad={() => {
 						retryMs = INITIAL_RETRY_MS;
 						updateStatus('connected');
@@ -154,7 +155,9 @@ const CameraStream: Component<CameraStreamProps> = (props) => {
 				<div class='text-on-surface-variant text-lg'>No camera URL</div>
 			)}
 			{status() !== 'connected' && imgSrc() && (
-				<div class='absolute top-2 right-2 px-2.5 py-1 bg-scrim/70 rounded text-xs capitalize'>{status()}</div>
+				<div class='absolute inset-0 flex items-center justify-center'>
+					<div class='text-on-surface-variant text-lg capitalize'>{status()}</div>
+				</div>
 			)}
 		</div>
 	);
