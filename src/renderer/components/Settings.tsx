@@ -33,7 +33,7 @@ const Settings: Component<SettingsProps> = (props) => {
 					max='99999'
 					value={team()}
 					onInput={(e) => setTeam(Number(e.currentTarget.value))}
-					class='w-full px-1.5 py-1 bg-[#333] border border-[#555] rounded text-[#e0e0e0] text-[13px]'
+					class='w-full px-1.5 py-1 bg-[#333] border border-[#555] rounded text-[#e0e0e0] text-[13px] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]'
 				/>
 			</label>
 			<button
