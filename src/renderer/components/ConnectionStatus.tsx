@@ -16,11 +16,11 @@ function streamLabel(status: StreamStatus) {
 	return 'Disconnected';
 }
 
-const baseStyle = 'border-t border-outline p-4 text-center uppercase tracking-wider text-sm font-bold';
+const baseStyle = 'p-4 text-center uppercase tracking-wider text-sm font-bold';
 
 const ConnectionStatus: Component<ConnectionStatusProps> = (props) => {
 	return (
-		<div class='flex flex-col'>
+		<div class='flex flex-col border-t border-outline-variant'>
 			<div class={baseStyle} classList={{ 'bg-error-container text-white': !props.ntConnected }}>
 				NT4: {ntLabel(props.ntConnected)}
 			</div>
