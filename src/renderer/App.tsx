@@ -27,19 +27,16 @@ const App: Component = () => {
 	);
 
 	return (
-		<div class='flex flex-col h-full'>
-			<header class='flex items-center justify-between px-3 py-2 bg-[#252525] border-b border-[#333] gap-3 shrink-0'>
+		<div class='flex h-full'>
+			<aside class='flex flex-col gap-3 px-3 py-2 bg-[#252525] border-r border-[#333] shrink-0'>
 				<Settings onTeamChange={setTeamNumber} />
 				<ConnectionStatus ntConnected={ntConnected()} streamStatus={streamStatus()} />
-			</header>
+				<CameraSelect cameras={cameras()} onSelect={setStreamUrl} />
+			</aside>
 
 			<main class='flex-1 flex items-center justify-center overflow-hidden'>
 				<CameraStream url={streamUrl()} ntConnected={ntConnected()} onStatusChange={setStreamStatus} />
 			</main>
-
-			<footer class='px-3 py-2 bg-[#252525] border-t border-[#333] shrink-0'>
-				<CameraSelect cameras={cameras()} onSelect={setStreamUrl} />
-			</footer>
 		</div>
 	);
 };

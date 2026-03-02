@@ -24,8 +24,8 @@ const Settings: Component<SettingsProps> = (props) => {
 	}
 
 	return (
-		<form class='flex items-center gap-2' onSubmit={handleSubmit}>
-			<label class='flex items-center gap-1 text-[13px]'>
+		<form class='flex flex-col gap-1.5' onSubmit={handleSubmit}>
+			<label class='flex flex-col gap-1 text-[13px]'>
 				Team #
 				<input
 					type='number'
@@ -33,7 +33,7 @@ const Settings: Component<SettingsProps> = (props) => {
 					max='99999'
 					value={team()}
 					onInput={(e) => setTeam(Number(e.currentTarget.value))}
-					class='w-[70px] px-1.5 py-1 bg-[#333] border border-[#555] rounded text-[#e0e0e0] text-[13px]'
+					class='w-full px-1.5 py-1 bg-[#333] border border-[#555] rounded text-[#e0e0e0] text-[13px]'
 				/>
 			</label>
 			<button
