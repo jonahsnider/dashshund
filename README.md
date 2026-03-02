@@ -4,6 +4,8 @@ FRC dashboard for viewing camera streams for [Team 581](https://team581.com/). B
 
 Connects to the robot via NetworkTables (NT4) and displays camera streams.
 
+![Screenshot of Dashshund running](./image.png)
+
 ## Development
 
 ```sh
