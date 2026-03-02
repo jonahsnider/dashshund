@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026.0.3](https://github.com/jonahsnider/dashshund/compare/v2026.0.2...v2026.0.3) (2026-03-02)
+
+
+### Bug Fixes
+
+* fix artifact glob breaking CI ([d538e82](https://github.com/jonahsnider/dashshund/commit/d538e82cb03341a0cfc0516f3aad5583dfab3bfb))
+
 ## [2026.0.2](https://github.com/jonahsnider/dashshund/compare/v2026.0.1...v2026.0.2) (2026-03-02)
 
 

@@ -1,6 +1,6 @@
 {
 	"name": "dashshund",
-	"version": "2026.0.2",
+	"version": "2026.0.3",
 	"description": "FRC dashboard for viewing camera streams",
 	"author": "Team 581",
 	"private": true,
