@@ -6,15 +6,29 @@ Connects to the robot via NetworkTables (NT4) and displays camera streams.
 
 ![Screenshot of Dashshund running](./image.png)
 
+## Installing
+
+Install with Brew:
+
+```sh
+brew install jonahsnider/frc/dashshund
+```
+
+Or you can download the latest release from the [GitHub releases page](https://github.com/jonahsnider/dashshund/releases/latest).
+
 ## Development
 
 ```sh
+# Install dependencies
 bun install
+# Run the dev server
 bun run dev
-```
 
-## Building
+# Run a full build
+bun run build
+# Preview the built app
+bun run preview
 
-```sh
+# Package the app into a native executable
 bun run package
 ```
