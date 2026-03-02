@@ -1,18 +1,18 @@
 {
 	"name": "dashshund",
 	"version": "2026.0.4",
+	"private": true,
 	"description": "FRC dashboard for viewing camera streams",
 	"author": "Team 581",
-	"private": true,
 	"main": "./out/main/index.js",
 	"scripts": {
-		"dev": "electron-vite dev",
 		"build": "electron-vite build",
-		"preview": "electron-vite preview",
-		"package": "electron-vite build && electron-builder",
+		"dev": "electron-vite dev",
+		"generate-icons": "pwa-assets-generator",
 		"lint": "biome check",
 		"lint:fix": "biome check --write --unsafe",
-		"generate-icons": "pwa-assets-generator"
+		"package": "electron-vite build && electron-builder",
+		"preview": "electron-vite preview"
 	},
 	"dependencies": {
 		"@solid-primitives/storage": "^4.3.4",
