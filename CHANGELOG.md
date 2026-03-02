@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026.0.1](https://github.com/jonahsnider/dashshund/compare/v2026.0.0...v2026.0.1) (2026-03-02)
+
+
+### Bug Fixes
+
+* make connection status less ugly ([d0d32c7](https://github.com/jonahsnider/dashshund/commit/d0d32c7588236a07b4bfdf782d74c4d20b84aed6))
+
 ## 2026.0.0 (2026-03-02)
 
 
