@@ -1,6 +1,6 @@
 import { makePersisted } from '@solid-primitives/storage';
 import { NetworkTables } from 'ntcore-ts-client';
-import { type Component, Show, createEffect, createSignal, on } from 'solid-js';
+import { type Component, createEffect, createSignal, on, Show } from 'solid-js';
 import CameraSelect from './components/CameraSelect.tsx';
 import CameraStream, { type StreamStatus } from './components/CameraStream.tsx';
 import ConnectionStatus from './components/ConnectionStatus.tsx';
@@ -32,7 +32,10 @@ const App: Component = () => {
 
 	return (
 		<div class='flex h-full'>
-			<aside class='flex flex-col justify-between bg-surface-container border-r border-outline-variant shrink-0' classList={{ 'w-80': sidebarOpen() }}>
+			<aside
+				class='flex flex-col justify-between bg-surface-container border-r border-outline-variant shrink-0'
+				classList={{ 'w-80': sidebarOpen() }}
+			>
 				<Show when={sidebarOpen()}>
 					<div class='flex flex-col gap-8 p-6'>
 						<div class='flex justify-between items-baseline uppercase tracking-wider font-bold text-sm'>
