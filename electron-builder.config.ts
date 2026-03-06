@@ -17,7 +17,7 @@ const config: Configuration = {
 		],
 	},
 	win: {
-		icon: 'build/icon-1024x1024.png',
+		icon: 'build/icon-256x256.png',
 		target: [
 			{
 				target: 'nsis',

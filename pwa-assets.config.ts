@@ -3,9 +3,8 @@ import { defineConfig } from '@vite-pwa/assets-generator/config';
 export default defineConfig({
 	preset: {
 		transparent: {
-			sizes: [1024],
-			favicons: [[48, 'favicon.ico']],
-			padding: 0.05,
+			sizes: [256, 1024],
+			padding: 0,
 		},
 		maskable: {
 			sizes: [],
