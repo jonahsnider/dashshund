@@ -18,14 +18,14 @@ const Settings: Component<SettingsProps> = (props) => {
 
 	return (
 		<label class='flex flex-col gap-1'>
-			<span class='text-[10px] uppercase tracking-wider text-on-surface-variant'>Team Number</span>
+			<span class='text-sm uppercase tracking-wider text-on-surface-variant'>Team Number</span>
 			<input
 				type='number'
 				min='1'
 				max='99999'
 				value={team()}
 				onInput={handleInput}
-				class='w-full bg-transparent border-b border-outline py-2 text-sm text-on-surface outline-none focus:opacity-60 transition-opacity [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]'
+				class='w-full bg-transparent border-b border-outline py-2 text-lg text-on-surface outline-none focus:opacity-60 transition-opacity [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]'
 			/>
 		</label>
 	);

@@ -44,12 +44,12 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 
 	return (
 		<div class='flex flex-col gap-3'>
-			<span class='text-[10px] uppercase tracking-wider text-on-surface-variant'>Stream Source</span>
+			<span class='text-sm uppercase tracking-wider text-on-surface-variant'>Stream Source</span>
 
 			<div class='flex'>
 				<button
 					type='button'
-					class='flex-1 cursor-pointer py-2 text-sm uppercase tracking-wider border border-outline transition-colors rounded-l'
+					class='flex-1 cursor-pointer py-2 text-base uppercase tracking-wider border border-outline transition-colors'
 					classList={{
 						'bg-secondary-container text-on-secondary-container': !useManual(),
 						'bg-transparent text-on-surface': useManual(),
@@ -61,7 +61,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 
 				<button
 					type='button'
-					class='flex-1 cursor-pointer py-2 text-sm uppercase tracking-wider border border-outline border-l-0 transition-colors rounded-r'
+					class='flex-1 cursor-pointer py-2 text-sm uppercase tracking-wider border border-outline border-l-0 transition-colors'
 					classList={{
 						'bg-secondary-container text-on-secondary-container': useManual(),
 						'bg-transparent text-on-surface': !useManual(),
@@ -80,7 +80,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 						placeholder='10.5.81.11'
 						value={manualUrl()}
 						onInput={(e) => setManualUrl(e.currentTarget.value)}
-						class='w-full bg-transparent border-b border-outline py-2 text-sm text-on-surface outline-none focus:opacity-60 transition-opacity'
+						class='w-full bg-transparent border-b border-outline py-2 text-lg text-on-surface outline-none focus:opacity-60 transition-opacity'
 					/>
 				}
 			>
@@ -90,7 +90,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 						setSelectedCamera(e.currentTarget.value);
 						setUrlIndex(0);
 					}}
-					class='w-full bg-surface-container border-b border-outline py-2 text-sm text-on-surface outline-none appearance-none cursor-pointer'
+					class='w-full bg-surface-container border-b border-outline py-2 text-lg text-on-surface outline-none appearance-none cursor-pointer'
 				>
 					<option value='' disabled selected>
 						Select camera...
@@ -104,7 +104,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 							<select
 								value={urlIndex()}
 								onChange={(e) => setUrlIndex(Number(e.currentTarget.value))}
-								class='w-full bg-surface-container border-b border-outline py-2 text-sm text-on-surface outline-none appearance-none cursor-pointer'
+								class='w-full bg-surface-container border-b border-outline py-2 text-lg text-on-surface outline-none appearance-none cursor-pointer'
 							>
 								<For each={cam().urls}>{(url, i) => <option value={i()}>{url}</option>}</For>
 							</select>

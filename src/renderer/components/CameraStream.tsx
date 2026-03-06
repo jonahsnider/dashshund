@@ -152,11 +152,11 @@ const CameraStream: Component<CameraStreamProps> = (props) => {
 					}}
 				/>
 			) : (
-				<div class='text-on-surface-variant text-lg'>No camera URL</div>
+				<div class='text-on-surface-variant text-2xl'>No camera URL</div>
 			)}
 			{status() !== 'connected' && imgSrc() && (
 				<div class='absolute inset-0 flex items-center justify-center'>
-					<div class='text-on-surface-variant text-lg capitalize'>{status()}</div>
+					<div class='text-on-surface-variant text-2xl capitalize'>{status()}</div>
 				</div>
 			)}
 		</div>

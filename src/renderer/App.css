@@ -2,7 +2,7 @@
 
 @layer base {
 	body {
-		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+		font-family: "Geist Mono", "Courier New", monospace;
 	}
 }
 
@@ -56,4 +56,47 @@
 	--color-surface-container: rgb(39 29 29);
 	--color-surface-container-high: rgb(50 40 39);
 	--color-surface-container-highest: rgb(61 50 49);
+	--color-status-ok: rgb(0 200 120);
+	--color-status-warn: rgb(230 180 0);
+}
+
+:root {
+	--warning-tape-size: 48px;
+}
+
+@keyframes warning-tape-slide {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: var(--warning-tape-size) 0;
+	}
+}
+
+.warning-tape-error {
+	background-image: linear-gradient(
+		-45deg,
+		transparent 25%,
+		rgb(255 180 171 / 0.08) 25%,
+		rgb(255 180 171 / 0.08) 50%,
+		transparent 50%,
+		transparent 75%,
+		rgb(255 180 171 / 0.08) 75%
+	);
+	background-size: var(--warning-tape-size) var(--warning-tape-size);
+	animation: warning-tape-slide 1.5s linear infinite;
+}
+
+.warning-tape-warn {
+	background-image: linear-gradient(
+		-45deg,
+		transparent 25%,
+		rgb(230 180 0 / 0.1) 25%,
+		rgb(230 180 0 / 0.1) 50%,
+		transparent 50%,
+		transparent 75%,
+		rgb(230 180 0 / 0.1) 75%
+	);
+	background-size: var(--warning-tape-size) var(--warning-tape-size);
+	animation: warning-tape-slide 1s linear infinite;
 }

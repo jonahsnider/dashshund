@@ -37,24 +37,27 @@ const App: Component = () => {
 				class='flex flex-col justify-between bg-surface-container border-r border-outline-variant shrink-0'
 				classList={{ 'w-80': sidebarOpen() }}
 			>
-				<Show when={sidebarOpen()}>
-					<div class='flex flex-col gap-8 p-6'>
-						<div class='flex justify-between items-baseline uppercase tracking-wider font-bold text-sm'>
-							<span>Dashshund</span>
-							<span class='text-xs text-on-surface-variant font-normal'>v{__APP_VERSION__}</span>
-						</div>
+				<div class='flex flex-col'>
+					<ConnectionStatus ntConnected={ntConnected()} streamStatus={streamStatus()} />
 
-						<Settings onTeamChange={setTeamNumber} />
-						<CameraSelect cameras={cameras()} onSelect={setStreamUrl} />
-					</div>
-				</Show>
+					<Show when={sidebarOpen()}>
+						<div class='flex flex-col gap-5 p-4'>
+							<div class='flex justify-between items-baseline uppercase tracking-wider font-bold text-lg'>
+								<span>Dashshund</span>
+								<span class='text-sm text-on-surface-variant font-normal'>v{__APP_VERSION__}</span>
+							</div>
+
+							<Settings onTeamChange={setTeamNumber} />
+							<CameraSelect cameras={cameras()} onSelect={setStreamUrl} />
+						</div>
+					</Show>
+				</div>
 
 				<div class='flex flex-col mt-auto'>
-					<ConnectionStatus ntConnected={ntConnected()} streamStatus={streamStatus()} />
 					<Show when={sidebarOpen()}>
 						<button
 							type='button'
-							class='p-4 text-xs uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors border-t border-outline-variant cursor-pointer'
+							class='p-3 text-base uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors border-t border-outline-variant cursor-pointer'
 							onClick={async () => {
 								const isFullscreen = await window.electron.toggleFullscreen();
 								setFullscreen(isFullscreen);
@@ -65,15 +68,15 @@ const App: Component = () => {
 					</Show>
 					<button
 						type='button'
-						class='p-2 text-xs uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors border-t border-outline-variant cursor-pointer'
+						class='p-3 text-base uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors border-t border-outline-variant cursor-pointer'
 						onClick={() => setSidebarOpen(!sidebarOpen())}
 					>
-						{sidebarOpen() ? 'Close' : 'Open'}
+						{sidebarOpen() ? 'Close' : 'Open'} sidebar
 					</button>
 				</div>
 			</aside>
 
-			<main class='flex-1 flex items-center justify-center overflow-hidden'>
+			<main class='relative flex-1 flex items-center justify-center overflow-hidden'>
 				<CameraStream url={streamUrl()} ntConnected={ntConnected()} onStatusChange={setStreamStatus} />
 			</main>
 		</div>

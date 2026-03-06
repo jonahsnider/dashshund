@@ -16,23 +16,51 @@ function streamLabel(status: StreamStatus) {
 	return 'Disconnected';
 }
 
-const baseStyle = 'p-4 text-center uppercase tracking-wider text-sm font-bold';
-
-const ConnectionStatus: Component<ConnectionStatusProps> = (props) => {
+function StatusRow(props: { label: string; value: string; state: 'ok' | 'warn' | 'error' }) {
 	return (
-		<div class='flex flex-col border-t border-outline-variant'>
-			<div class={baseStyle} classList={{ 'bg-error-container text-white': !props.ntConnected }}>
-				NT4: {ntLabel(props.ntConnected)}
-			</div>
-			<div
-				class={baseStyle}
+		<div
+			class='flex items-center gap-3 px-4 py-3 border-l-2'
+			classList={{
+				'border-l-status-ok bg-status-ok/5': props.state === 'ok',
+				'border-l-status-warn bg-status-warn/5 warning-tape-warn': props.state === 'warn',
+				'border-l-error bg-error-container/20 warning-tape-error': props.state === 'error',
+			}}
+		>
+			<span
+				class='w-3 h-3 shrink-0 rounded-full'
 				classList={{
-					'bg-yellow-600 text-white animate-pulse': props.streamStatus === 'reconnecting',
-					'bg-error-container text-white': props.streamStatus === 'disconnected',
+					'bg-status-ok shadow-[0_0_6px_var(--color-status-ok)]': props.state === 'ok',
+					'bg-status-warn shadow-[0_0_6px_var(--color-status-warn)] animate-pulse': props.state === 'warn',
+					'bg-error shadow-[0_0_6px_var(--color-error)]': props.state === 'error',
+				}}
+			/>
+			<span class='uppercase tracking-wider text-base text-on-surface-variant'>{props.label}</span>
+			<span
+				class='ml-auto uppercase tracking-wider text-base font-bold'
+				classList={{
+					'text-status-ok': props.state === 'ok',
+					'text-status-warn': props.state === 'warn',
+					'text-error': props.state === 'error',
 				}}
 			>
-				Stream: {streamLabel(props.streamStatus)}
-			</div>
+				{props.value}
+			</span>
+		</div>
+	);
+}
+
+const ConnectionStatus: Component<ConnectionStatusProps> = (props) => {
+	const ntState = () => (props.ntConnected ? 'ok' : 'error') as const;
+	const streamState = () => {
+		if (props.streamStatus === 'connected') return 'ok' as const;
+		if (props.streamStatus === 'reconnecting') return 'warn' as const;
+		return 'error' as const;
+	};
+
+	return (
+		<div class='flex flex-col border-b border-outline-variant'>
+			<StatusRow label='NT4' value={ntLabel(props.ntConnected)} state={ntState()} />
+			<StatusRow label='Stream' value={streamLabel(props.streamStatus)} state={streamState()} />
 		</div>
 	);
 };
