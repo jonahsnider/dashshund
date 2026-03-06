@@ -1,4 +1,5 @@
-import { type Component, createEffect, createSignal, on, onCleanup } from 'solid-js';
+import { createPolled } from '@solid-primitives/timer';
+import { type Component, createEffect, createMemo, createSignal, on, onCleanup } from 'solid-js';
 
 export type StreamStatus = 'connected' | 'disconnected' | 'reconnecting';
 
@@ -22,6 +23,15 @@ function appendTimestamp(url: string): string {
 const CameraStream: Component<CameraStreamProps> = (props) => {
 	const [status, setStatus] = createSignal<StreamStatus>('disconnected');
 	const [imgSrc, setImgSrc] = createSignal<string>();
+	const [disconnectedAt, setDisconnectedAt] = createSignal<number | undefined>();
+	const tickDelay = () => (status() === 'reconnecting' && disconnectedAt() !== undefined ? 100 : false);
+	const now = createPolled(() => Date.now(), tickDelay);
+	const elapsedSec = createMemo(() => {
+		const t = disconnectedAt();
+		if (t === undefined) return undefined;
+		return Math.max(0, now() - t) / 1000;
+	});
+
 	let retryMs = INITIAL_RETRY_MS;
 	let retryTimeout: ReturnType<typeof setTimeout> | undefined;
 	let healthInterval: ReturnType<typeof setInterval> | undefined;
@@ -40,12 +50,14 @@ const CameraStream: Component<CameraStreamProps> = (props) => {
 
 	function connect(url: string) {
 		stopTimers();
+		setDisconnectedAt(Date.now());
 		updateStatus('reconnecting');
 		setImgSrc(appendTimestamp(url));
 	}
 
 	function retry(url: string) {
 		stopTimers();
+		if (disconnectedAt() === undefined) setDisconnectedAt(Date.now());
 		updateStatus('reconnecting');
 		retryTimeout = setTimeout(() => {
 			setImgSrc(appendTimestamp(url));
@@ -138,6 +150,7 @@ const CameraStream: Component<CameraStreamProps> = (props) => {
 					classList={{ invisible: status() !== 'connected' }}
 					onLoad={() => {
 						retryMs = INITIAL_RETRY_MS;
+						setDisconnectedAt(undefined);
 						updateStatus('connected');
 						if (props.url) {
 							startHealthCheck(props.url);
@@ -156,7 +169,12 @@ const CameraStream: Component<CameraStreamProps> = (props) => {
 			)}
 			{status() !== 'connected' && imgSrc() && (
 				<div class='absolute inset-0 flex items-center justify-center'>
-					<div class='text-on-surface-variant text-2xl capitalize'>{status()}</div>
+					<div class='text-on-surface-variant text-2xl capitalize'>
+						{status()}
+						{status() === 'reconnecting' && elapsedSec() !== undefined && (
+							<span class='ml-2 tabular-nums'>{elapsedSec()?.toFixed(1)}s</span>
+						)}
+					</div>
 				</div>
 			)}
 		</div>
