@@ -1,5 +1,6 @@
 import { makePersisted } from '@solid-primitives/storage';
 import { type Component, createEffect, createSignal, For, Show } from 'solid-js';
+import urlParseLax from 'url-parse-lax';
 import type { CameraInfo } from '../lib/cameras.ts';
 
 interface CameraSelectProps {
@@ -18,8 +19,15 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 		let url: string | undefined;
 
 		if (useManual()) {
-			const ip = manualUrl();
-			url = ip ? `http://${ip}:5801/stream.mjpg` : undefined;
+			const raw = manualUrl().trim();
+			if (raw) {
+				const full = urlParseLax(raw, { https: false });
+				full.port ||= '5801';
+				if (full.pathname === '/') {
+					full.pathname = '/stream.mjpg';
+				}
+				url = full.href ?? undefined;
+			}
 		} else {
 			const cam = props.cameras.find((c) => c.name === selectedCamera());
 			url = cam?.urls[urlIndex()] ?? cam?.urls[0];
