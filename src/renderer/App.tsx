@@ -54,7 +54,7 @@ const App: Component = () => {
 					<Show when={sidebarOpen()}>
 						<button
 							type='button'
-							class='p-4 text-xs uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors border-t border-outline-variant'
+							class='p-4 text-xs uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors border-t border-outline-variant cursor-pointer'
 							onClick={async () => {
 								const isFullscreen = await window.electron.toggleFullscreen();
 								setFullscreen(isFullscreen);
@@ -65,7 +65,7 @@ const App: Component = () => {
 					</Show>
 					<button
 						type='button'
-						class='p-2 text-xs uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors border-t border-outline-variant'
+						class='p-2 text-xs uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors border-t border-outline-variant cursor-pointer'
 						onClick={() => setSidebarOpen(!sidebarOpen())}
 					>
 						{sidebarOpen() ? 'Close' : 'Open'}
