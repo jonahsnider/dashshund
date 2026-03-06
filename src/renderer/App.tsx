@@ -17,6 +17,7 @@ const App: Component = () => {
 	const [streamStatus, setStreamStatus] = createSignal<StreamStatus>('disconnected');
 	const [sidebarOpen, setSidebarOpen] = makePersisted(createSignal(true), { name: 'dashshund-sidebar-open' });
 	const [fullscreen, setFullscreen] = createSignal(false);
+	window.electron.onFullscreenChange(setFullscreen);
 
 	const ntConnected = createNTConnection(nt());
 	const cameras = createCameraDiscovery(nt());
@@ -58,10 +59,7 @@ const App: Component = () => {
 						<button
 							type='button'
 							class='p-3 text-base uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors border-t border-outline-variant cursor-pointer'
-							onClick={async () => {
-								const isFullscreen = await window.electron.toggleFullscreen();
-								setFullscreen(isFullscreen);
-							}}
+							onClick={() => window.electron.toggleFullscreen()}
 						>
 							{fullscreen() ? 'Exit fullscreen' : 'Fullscreen'}
 						</button>

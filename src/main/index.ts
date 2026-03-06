@@ -20,6 +20,13 @@ function createWindow(): void {
 		mainWindow.show();
 	});
 
+	mainWindow.on('enter-full-screen', () => {
+		mainWindow.webContents.send('fullscreen-changed', true);
+	});
+	mainWindow.on('leave-full-screen', () => {
+		mainWindow.webContents.send('fullscreen-changed', false);
+	});
+
 	mainWindow.webContents.setWindowOpenHandler((details) => {
 		shell.openExternal(details.url);
 		return { action: 'deny' };
@@ -59,14 +66,7 @@ app.whenReady().then(() => {
 		const win = BrowserWindow.getFocusedWindow();
 		if (win) {
 			win.setFullScreen(!win.isFullScreen());
-			return win.isFullScreen();
 		}
-		return false;
-	});
-
-	ipcMain.handle('is-fullscreen', () => {
-		const win = BrowserWindow.getFocusedWindow();
-		return win?.isFullScreen() ?? false;
 	});
 
 	app.on('activate', () => {

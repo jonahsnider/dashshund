@@ -2,5 +2,7 @@ import { contextBridge, ipcRenderer } from 'electron';
 
 contextBridge.exposeInMainWorld('electron', {
 	toggleFullscreen: () => ipcRenderer.invoke('toggle-fullscreen'),
-	isFullscreen: () => ipcRenderer.invoke('is-fullscreen'),
+	onFullscreenChange: (callback: (isFullscreen: boolean) => void) => {
+		ipcRenderer.on('fullscreen-changed', (_event, isFullscreen: boolean) => callback(isFullscreen));
+	},
 });
