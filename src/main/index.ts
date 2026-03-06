@@ -1,6 +1,6 @@
 import { join } from 'node:path';
 import { is } from '@electron-toolkit/utils';
-import { app, BrowserWindow, shell } from 'electron';
+import { app, BrowserWindow, ipcMain, shell } from 'electron';
 
 function createWindow(): void {
 	const mainWindow = new BrowserWindow({
@@ -34,6 +34,20 @@ function createWindow(): void {
 
 app.whenReady().then(() => {
 	createWindow();
+
+	ipcMain.handle('toggle-fullscreen', () => {
+		const win = BrowserWindow.getFocusedWindow();
+		if (win) {
+			win.setFullScreen(!win.isFullScreen());
+			return win.isFullScreen();
+		}
+		return false;
+	});
+
+	ipcMain.handle('is-fullscreen', () => {
+		const win = BrowserWindow.getFocusedWindow();
+		return win?.isFullScreen() ?? false;
+	});
 
 	app.on('activate', () => {
 		if (BrowserWindow.getAllWindows().length === 0) {

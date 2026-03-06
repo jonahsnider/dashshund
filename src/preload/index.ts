@@ -1,1 +1,6 @@
-// No context bridge needed - ntcore-ts-client runs in the renderer via WebSockets
+import { contextBridge, ipcRenderer } from 'electron';
+
+contextBridge.exposeInMainWorld('electron', {
+	toggleFullscreen: () => ipcRenderer.invoke('toggle-fullscreen'),
+	isFullscreen: () => ipcRenderer.invoke('is-fullscreen'),
+});
