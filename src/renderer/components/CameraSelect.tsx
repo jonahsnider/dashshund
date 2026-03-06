@@ -18,7 +18,8 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 		let url: string | undefined;
 
 		if (useManual()) {
-			url = manualUrl() || undefined;
+			const ip = manualUrl();
+			url = ip ? `http://${ip}:5801/stream.mjpg` : undefined;
 		} else {
 			const cam = props.cameras.find((c) => c.name === selectedCamera());
 			url = cam?.urls[urlIndex()] ?? cam?.urls[0];
@@ -76,7 +77,7 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 				fallback={
 					<input
 						type='text'
-						placeholder='http://10.5.81.11:5800/stream.mjpg'
+						placeholder='10.5.81.11'
 						value={manualUrl()}
 						onInput={(e) => setManualUrl(e.currentTarget.value)}
 						class='w-full bg-transparent border-b border-outline py-2 text-sm text-on-surface outline-none focus:opacity-60 transition-opacity'
