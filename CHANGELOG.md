@@ -1,5 +1,18 @@
 # Changelog
 
+## [2026.1.0](https://github.com/jonahsnider/dashshund/compare/v2026.0.4...v2026.1.0) (2026-03-06)
+
+
+### Features
+
+* support arm64 and x64 for all platforms ([149f65b](https://github.com/jonahsnider/dashshund/commit/149f65b69787ccedf8926df3fc3a8d5127398725))
+* support collapsing sidebar ([141d8f2](https://github.com/jonahsnider/dashshund/commit/141d8f26ad98f956baafb05f6fe1d8dcd5d684c9))
+
+
+### Bug Fixes
+
+* fix white background flicker when opening/closing app ([7863276](https://github.com/jonahsnider/dashshund/commit/78632762a8f6eafafff9fe662c8a6a3ad73f79d1))
+
 ## [2026.0.4](https://github.com/jonahsnider/dashshund/compare/v2026.0.3...v2026.0.4) (2026-03-02)
 
 
