@@ -1,6 +1,6 @@
 import { makePersisted } from '@solid-primitives/storage';
 import { NetworkTables } from 'ntcore-ts-client';
-import { type Component, createEffect, createSignal, on } from 'solid-js';
+import { type Component, Show, createEffect, createSignal, on } from 'solid-js';
 import CameraSelect from './components/CameraSelect.tsx';
 import CameraStream, { type StreamStatus } from './components/CameraStream.tsx';
 import ConnectionStatus from './components/ConnectionStatus.tsx';
@@ -15,6 +15,7 @@ const App: Component = () => {
 	const [nt, setNt] = createSignal<NetworkTables>(NetworkTables.getInstanceByTeam(teamNumber()));
 	const [streamUrl, setStreamUrl] = createSignal<string | undefined>();
 	const [streamStatus, setStreamStatus] = createSignal<StreamStatus>('disconnected');
+	const [sidebarOpen, setSidebarOpen] = makePersisted(createSignal(true), { name: 'dashshund-sidebar-open' });
 
 	const ntConnected = createNTConnection(nt());
 	const cameras = createCameraDiscovery(nt());
@@ -31,18 +32,29 @@ const App: Component = () => {
 
 	return (
 		<div class='flex h-full'>
-			<aside class='w-80 flex flex-col justify-between bg-surface-container border-r border-outline-variant shrink-0'>
-				<div class='flex flex-col gap-8 p-6'>
-					<div class='flex justify-between items-baseline uppercase tracking-wider font-bold text-sm'>
-						<span>Dashshund</span>
-						<span class='text-xs text-on-surface-variant font-normal'>v{__APP_VERSION__}</span>
+			<aside class='flex flex-col justify-between bg-surface-container border-r border-outline-variant shrink-0' classList={{ 'w-80': sidebarOpen() }}>
+				<Show when={sidebarOpen()}>
+					<div class='flex flex-col gap-8 p-6'>
+						<div class='flex justify-between items-baseline uppercase tracking-wider font-bold text-sm'>
+							<span>Dashshund</span>
+							<span class='text-xs text-on-surface-variant font-normal'>v{__APP_VERSION__}</span>
+						</div>
+
+						<Settings onTeamChange={setTeamNumber} />
+						<CameraSelect cameras={cameras()} onSelect={setStreamUrl} />
 					</div>
+				</Show>
 
-					<Settings onTeamChange={setTeamNumber} />
-					<CameraSelect cameras={cameras()} onSelect={setStreamUrl} />
+				<div class='flex flex-col mt-auto'>
+					<ConnectionStatus ntConnected={ntConnected()} streamStatus={streamStatus()} />
+					<button
+						type='button'
+						class='p-2 text-xs uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors border-t border-outline-variant'
+						onClick={() => setSidebarOpen(!sidebarOpen())}
+					>
+						{sidebarOpen() ? 'Close' : 'Open'}
+					</button>
 				</div>
-
-				<ConnectionStatus ntConnected={ntConnected()} streamStatus={streamStatus()} />
 			</aside>
 
 			<main class='flex-1 flex items-center justify-center overflow-hidden'>
