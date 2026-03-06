@@ -7,6 +7,16 @@ const config: Configuration = {
 	directories: {
 		output: 'dist',
 	},
+	electronFuses: {
+		runAsNode: false,
+		enableCookieEncryption: true,
+		enableNodeOptionsEnvironmentVariable: false,
+		enableNodeCliInspectArguments: false,
+		enableEmbeddedAsarIntegrityValidation: true,
+		onlyLoadAppFromAsar: true,
+		loadBrowserProcessSpecificV8Snapshot: false,
+		grantFileProtocolExtraPrivileges: false,
+	},
 	mac: {
 		icon: 'build/icon-1024x1024.png',
 		target: [
