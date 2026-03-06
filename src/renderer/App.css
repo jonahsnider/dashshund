@@ -90,6 +90,7 @@
 	);
 	background-size: var(--warning-tape-size) var(--warning-tape-size);
 	animation: warning-tape-slide 1.5s linear infinite;
+	animation-delay: -999999s;
 }
 
 .warning-tape-warn {
@@ -104,4 +105,5 @@
 	);
 	background-size: var(--warning-tape-size) var(--warning-tape-size);
 	animation: warning-tape-slide 1s linear infinite;
+	animation-delay: -999999s;
 }
