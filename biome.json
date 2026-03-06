@@ -5,6 +5,9 @@
 			"tailwindDirectives": true
 		}
 	},
+	"files": {
+		"includes": ["**", "!**/*.local.json"]
+	},
 	"formatter": {
 		"formatWithErrors": true,
 		"lineWidth": 120
