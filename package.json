@@ -15,6 +15,7 @@
 		"preview": "electron-vite preview"
 	},
 	"dependencies": {
+		"@fontsource/geist-mono": "^5.2.7",
 		"@solid-primitives/storage": "^4.3.4",
 		"@solid-primitives/timer": "^1.4.4",
 		"@tailwindcss/vite": "^4.2.1",
