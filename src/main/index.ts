@@ -1,6 +1,6 @@
 import { join } from 'node:path';
 import { is } from '@electron-toolkit/utils';
-import { app, BrowserWindow, ipcMain, shell } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu, MenuItem, shell } from 'electron';
 
 function createWindow(): void {
 	const mainWindow = new BrowserWindow({
@@ -33,6 +33,26 @@ function createWindow(): void {
 }
 
 app.whenReady().then(() => {
+	const defaultMenu = Menu.getApplicationMenu();
+
+	defaultMenu?.append(
+		new MenuItem({
+			label: 'Links',
+			submenu: [
+				{
+					label: 'GitHub Repository',
+					click: () => shell.openExternal('https://github.com/jonahsnider/dashshund'),
+				},
+				{
+					label: 'Latest Release',
+					click: () => shell.openExternal('https://github.com/jonahsnider/dashshund/releases/latest'),
+				},
+			],
+		}),
+	);
+
+	Menu.setApplicationMenu(defaultMenu);
+
 	createWindow();
 
 	ipcMain.handle('toggle-fullscreen', () => {
