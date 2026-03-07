@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026.3.2](https://github.com/jonahsnider/dashshund/compare/dashshund-v2026.3.1...dashshund-v2026.3.2) (2026-03-07)
+
+
+### Bug Fixes
+
+* fix release ([898de70](https://github.com/jonahsnider/dashshund/commit/898de70d7cd43e17f0d5ef6830de7ba5220a9868))
+
 ## [2026.3.1](https://github.com/jonahsnider/dashshund/compare/dashshund-v2026.3.0...dashshund-v2026.3.1) (2026-03-07)
 
 
