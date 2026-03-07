@@ -3,18 +3,18 @@
 	"packages": {
 		".": {
 			"release-type": "node",
-			"component": "dashshund"
-		},
-		"src-tauri": {
-			"release-type": "rust",
-			"component": "dashshund-tauri"
+			"extra-files": [
+				{
+					"type": "toml",
+					"path": "src-tauri/Cargo.toml",
+					"jsonpath": "$.package.version"
+				},
+				{
+					"type": "toml",
+					"path": "src-tauri/Cargo.lock",
+					"jsonpath": "$.package[?(@.name=='dashshund')].version"
+				}
+			]
 		}
-	},
-	"plugins": [
-		{
-			"type": "linked-versions",
-			"groupName": "dashshund",
-			"components": ["dashshund", "dashshund-tauri"]
-		}
-	]
+	}
 }
