@@ -1,5 +1,27 @@
 # Changelog
 
+## [2026.2.0](https://github.com/jonahsnider/dashshund/compare/v2026.1.1...v2026.2.0) (2026-03-07)
+
+
+### Features
+
+* add button to toggle fullscreen ([edcc941](https://github.com/jonahsnider/dashshund/commit/edcc941422000081a107bedaaf87417c77b42e0b))
+* add menu items for GitHub repo and latest release ([3b7b26f](https://github.com/jonahsnider/dashshund/commit/3b7b26fe7309998b7947cc6d00a63f38eb340545))
+* add timer for how long camera has been disconnected ([666e464](https://github.com/jonahsnider/dashshund/commit/666e464ddc238ad648a546519806ff8c1cc20502))
+* improve manual URL parsing ([7e8e82c](https://github.com/jonahsnider/dashshund/commit/7e8e82c15e485e6cf1a61c95a55fa2932767ac12))
+* make manual IP input simpler ([41d2dc5](https://github.com/jonahsnider/dashshund/commit/41d2dc522abf3f956778730a03dcf000a7319fa8))
+* redesign UI ([1f91652](https://github.com/jonahsnider/dashshund/commit/1f916527143ebf1c5e6547374cc2ac128b7269b8))
+* switch from Electron to Tauri ([#16](https://github.com/jonahsnider/dashshund/issues/16)) ([204d385](https://github.com/jonahsnider/dashshund/commit/204d385f04db43eae37d536b845aee41f7278a0e))
+
+
+### Bug Fixes
+
+* add pointer icon to fullscreen and sidebar collapse icons ([9ff282d](https://github.com/jonahsnider/dashshund/commit/9ff282d7016f39cba11d0e3641ecf5a383e4333d))
+* bundle Geist font with app for offline use ([61f5da3](https://github.com/jonahsnider/dashshund/commit/61f5da38d8c6ff2af24969fb8db53a50cc9c4ad4))
+* fix error warning tape animation not being synced ([cc7c987](https://github.com/jonahsnider/dashshund/commit/cc7c987b49cacc2a58afc2a2aa59c752ab4799c9))
+* fix fullscreen button label desync ([02dd3ad](https://github.com/jonahsnider/dashshund/commit/02dd3ad214e0415d916cba364854f64dc9625e15))
+* improve the quality of app icons ([daecadd](https://github.com/jonahsnider/dashshund/commit/daecadd88f8be4328005c919ae46ca8c9061eea4))
+
 ## [2026.1.1](https://github.com/jonahsnider/dashshund/compare/v2026.1.0...v2026.1.1) (2026-03-06)
 
 
