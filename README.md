@@ -1,6 +1,6 @@
 # Dashshund
 
-FRC dashboard for viewing camera streams for [Team 581](https://team581.com/). Built with Electron, SolidJS, and Tailwind CSS.
+FRC dashboard for viewing camera streams for [Team 581](https://team581.com/). Built with Tauri, SolidJS, and Tailwind CSS.
 
 Connects to the robot via NetworkTables (NT4) and displays camera streams.
 
@@ -21,14 +21,10 @@ Or you can download the latest release from the [GitHub releases page](https://g
 ```sh
 # Install dependencies
 bun install
+
 # Run the dev server
 bun run dev
 
 # Run a full build
 bun run build
-# Preview the built app
-bun run preview
-
-# Package the app into a native executable
-bun run package
 ```
