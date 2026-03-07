@@ -1,5 +1,17 @@
 # Changelog
 
+## [2026.2.1](https://github.com/jonahsnider/dashshund/compare/v2026.2.0...v2026.2.1) (2026-03-07)
+
+
+### Bug Fixes
+
+* update Tauri app version string in releases ([ce6765c](https://github.com/jonahsnider/dashshund/commit/ce6765c94afaee8bde4db88eab133072557e2987))
+
+
+### Performance Improvements
+
+* optimize images ([#17](https://github.com/jonahsnider/dashshund/issues/17)) ([096de56](https://github.com/jonahsnider/dashshund/commit/096de5673b0bcf7efa2d9130f09f615d5142080e))
+
 ## [2026.2.0](https://github.com/jonahsnider/dashshund/compare/v2026.1.1...v2026.2.0) (2026-03-07)
 
 
