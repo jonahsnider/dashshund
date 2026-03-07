@@ -1,9 +1,7 @@
-import { readFileSync } from 'node:fs';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
-
-const pkg = JSON.parse(readFileSync('package.json', 'utf-8'));
+import pkg from './package.json' with { type: 'json' };
 
 export default defineConfig({
 	root: 'src/renderer',
