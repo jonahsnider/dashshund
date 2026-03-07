@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026.4.1](https://github.com/jonahsnider/dashshund/compare/v2026.4.0...v2026.4.1) (2026-03-07)
+
+
+### Bug Fixes
+
+* enable ad-hoc signing for macOS ([5fde840](https://github.com/jonahsnider/dashshund/commit/5fde840bdef12a74e47d3098a9ea1b43cf9d5485))
+
 ## [2026.4.0](https://github.com/jonahsnider/dashshund/compare/v2026.3.2...v2026.4.0) (2026-03-07)
 
 

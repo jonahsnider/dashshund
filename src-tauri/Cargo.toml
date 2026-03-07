@@ -1,6 +1,6 @@
 [package]
 name = "dashshund"
-version = "2026.4.0"
+version = "2026.4.1"
 edition = "2021"
 
 [build-dependencies]
