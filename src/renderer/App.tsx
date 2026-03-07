@@ -1,4 +1,5 @@
 import { makePersisted } from '@solid-primitives/storage';
+import { getCurrentWindow } from '@tauri-apps/api/window';
 import { NetworkTables } from 'ntcore-ts-client';
 import { type Component, createEffect, createSignal, on, Show } from 'solid-js';
 import CameraSelect from './components/CameraSelect.tsx';
@@ -17,7 +18,10 @@ const App: Component = () => {
 	const [streamStatus, setStreamStatus] = createSignal<StreamStatus>('disconnected');
 	const [sidebarOpen, setSidebarOpen] = makePersisted(createSignal(true), { name: 'dashshund-sidebar-open' });
 	const [fullscreen, setFullscreen] = createSignal(false);
-	window.electron.onFullscreenChange(setFullscreen);
+	const appWindow = getCurrentWindow();
+	appWindow.onResized(async () => {
+		setFullscreen(await appWindow.isFullscreen());
+	});
 
 	const ntConnected = createNTConnection(nt());
 	const cameras = createCameraDiscovery(nt());
@@ -59,7 +63,11 @@ const App: Component = () => {
 						<button
 							type='button'
 							class='p-3 text-base uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors border-t border-outline-variant cursor-pointer'
-							onClick={() => window.electron.toggleFullscreen()}
+							onClick={async () => {
+								const newFullscreen = !(await appWindow.isFullscreen());
+								await appWindow.setFullscreen(newFullscreen);
+								setFullscreen(newFullscreen);
+							}}
 						>
 							{fullscreen() ? 'Exit fullscreen' : 'Fullscreen'}
 						</button>

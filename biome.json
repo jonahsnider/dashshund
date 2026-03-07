@@ -6,7 +6,7 @@
 		}
 	},
 	"files": {
-		"includes": ["**", "!**/*.local.json"]
+		"includes": ["**", "!**/*.local.json", "!**/*.icon"]
 	},
 	"formatter": {
 		"formatWithErrors": true,

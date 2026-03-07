@@ -1,9 +1,16 @@
 {
-	"extends": "@electron-toolkit/tsconfig/tsconfig.web.json",
-	"include": ["src/renderer/**/*"],
 	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
 		"composite": true,
 		"jsx": "preserve",
-		"jsxImportSource": "solid-js"
-	}
+		"jsxImportSource": "solid-js",
+		"strict": true,
+		"noEmit": true,
+		"skipLibCheck": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true
+	},
+	"include": ["src/renderer/**/*", "vite.config.ts"]
 }
