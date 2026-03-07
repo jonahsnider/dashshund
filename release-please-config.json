@@ -3,14 +3,7 @@
 	"packages": {
 		".": {
 			"release-type": "node",
-			"component": "dashshund",
-			"extra-files": [
-				{
-					"type": "json",
-					"path": "src-tauri/tauri.conf.json",
-					"jsonpath": "$.version"
-				}
-			]
+			"component": "dashshund"
 		},
 		"src-tauri": {
 			"release-type": "rust",
