@@ -1,5 +1,13 @@
 # Changelog
 
+## [2026.5.0](https://github.com/jonahsnider/dashshund/compare/v2026.4.1...v2026.5.0) (2026-03-10)
+
+
+### Features
+
+* add auto updating for Windows ([31cb58b](https://github.com/jonahsnider/dashshund/commit/31cb58becf6ccb5523735e10306df06f62b9c6f8))
+* remember window position ([052aecf](https://github.com/jonahsnider/dashshund/commit/052aecf0be887cdaa0c1ebc9ccdd2657baf65fbf))
+
 ## [2026.4.1](https://github.com/jonahsnider/dashshund/compare/v2026.4.0...v2026.4.1) (2026-03-07)
 
 
