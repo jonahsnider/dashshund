@@ -8,6 +8,9 @@ fn main() {
         .plugin(tauri_plugin_window_state::Builder::new().build())
         .plugin(tauri_plugin_opener::init())
         .setup(|app| {
+            #[cfg(target_os = "windows")]
+            app.handle().plugin(tauri_plugin_updater::Builder::new().build())?;
+
             let app_submenu = SubmenuBuilder::new(app, "Dashshund")
                 .about(Some(AboutMetadataBuilder::new().build()))
                 .separator()
