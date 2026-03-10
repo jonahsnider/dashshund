@@ -5,6 +5,7 @@ use tauri_plugin_opener::OpenerExt;
 
 fn main() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_window_state::Builder::new().build())
         .plugin(tauri_plugin_opener::init())
         .setup(|app| {
             let app_submenu = SubmenuBuilder::new(app, "Dashshund")
