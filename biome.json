@@ -6,7 +6,7 @@
 		}
 	},
 	"files": {
-		"includes": ["**", "!**/*.local.json", "!**/*.icon"]
+		"includes": ["**", "!**/*.local.json", "!**/*.icon", "!.agents", "!skills-lock.json"]
 	},
 	"formatter": {
 		"formatWithErrors": true,
