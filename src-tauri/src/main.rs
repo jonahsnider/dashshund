@@ -45,11 +45,11 @@ fn main() {
             "github-repo" => {
                 let _ = app
                     .opener()
-                    .open_url("https://github.com/team581/dashshund", None::<&str>);
+                    .open_url("https://github.com/jonahsnider/dashshund", None::<&str>);
             }
             "latest-release" => {
                 let _ = app.opener().open_url(
-                    "https://github.com/team581/dashshund/releases/latest",
+                    "https://github.com/jonahsnider/dashshund/releases/latest",
                     None::<&str>,
                 );
             }
