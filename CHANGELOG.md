@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026.5.1](https://github.com/jonahsnider/dashshund/compare/v2026.5.0...v2026.5.1) (2026-03-20)
+
+
+### Bug Fixes
+
+* fix GitHub repository owner ([f83a4df](https://github.com/jonahsnider/dashshund/commit/f83a4df429867326be74a663e14b1229f9d0c1da))
+
 ## [2026.5.0](https://github.com/jonahsnider/dashshund/compare/v2026.4.1...v2026.5.0) (2026-03-10)
 
 
