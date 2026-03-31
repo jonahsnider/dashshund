@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026.6.0](https://github.com/jonahsnider/dashshund/compare/v2026.5.1...v2026.6.0) (2026-03-31)
+
+
+### Features
+
+* change dropdown for named cameras to be a list of buttons ([37fcf05](https://github.com/jonahsnider/dashshund/commit/37fcf053aca83e7d068c95796cf58d71808b8cd1))
+
 ## [2026.5.1](https://github.com/jonahsnider/dashshund/compare/v2026.5.0...v2026.5.1) (2026-03-20)
 
 
