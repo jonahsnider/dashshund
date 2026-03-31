@@ -1,4 +1,5 @@
 import { makePersisted } from '@solid-primitives/storage';
+import { MdFillCheck } from 'solid-icons/md';
 import { type Component, createEffect, createSignal, For, Show } from 'solid-js';
 import urlParseLax from 'url-parse-lax';
 import type { CameraInfo } from '../lib/cameras.ts';
@@ -44,9 +45,6 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 		if (!name) {
 			// No selection — auto-select the first camera
 			setSelectedCamera(props.cameras[0]?.name);
-		} else if (!props.cameras.some((c) => c.name === name)) {
-			// Stale selection — reset to placeholder
-			setSelectedCamera('');
 		}
 	});
 
@@ -92,19 +90,43 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 					/>
 				}
 			>
-				<select
-					value={selectedCamera()}
-					onChange={(e) => {
-						setSelectedCamera(e.currentTarget.value);
-						setUrlIndex(0);
-					}}
-					class='w-full bg-surface-container border-b border-outline py-2 text-lg text-on-surface outline-none appearance-none cursor-pointer'
-				>
-					<option value='' disabled selected>
-						Select camera...
-					</option>
-					<For each={props.cameras}>{(cam) => <option value={cam.name}>{cam.name}</option>}</For>
-				</select>
+				<div class='flex flex-col gap-1'>
+					<Show when={selectedCamera() && !props.cameras.some((c) => c.name === selectedCamera())}>
+						<button
+							type='button'
+							disabled
+							class='w-full py-2 px-3 text-lg text-left border border-outline flex items-center gap-2 bg-secondary-container text-on-secondary-container opacity-50'
+						>
+							<MdFillCheck class='size-5 shrink-0' />
+							{selectedCamera()}
+						</button>
+					</Show>
+					<For each={props.cameras}>
+						{(cam) => (
+							<button
+								type='button'
+								class='w-full cursor-pointer py-2 px-3 text-lg text-left border border-outline transition-colors flex items-center gap-2'
+								classList={{
+									'bg-secondary-container text-on-secondary-container': selectedCamera() === cam.name,
+									'bg-transparent text-on-surface': selectedCamera() !== cam.name,
+								}}
+								onClick={() => {
+									setSelectedCamera(cam.name);
+									setUrlIndex(0);
+								}}
+							>
+								<MdFillCheck
+									class='size-5 shrink-0 transition-opacity'
+									classList={{
+										'opacity-100': selectedCamera() === cam.name,
+										'opacity-0': selectedCamera() !== cam.name,
+									}}
+								/>
+								{cam.name}
+							</button>
+						)}
+					</For>
+				</div>
 
 				<Show when={props.cameras.find((c) => c.name === selectedCamera())}>
 					{(cam) => (

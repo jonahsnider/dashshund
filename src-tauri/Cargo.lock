@@ -642,7 +642,7 @@ dependencies = [
 
 [[package]]
 name = "dashshund"
-version = "2026.4.1"
+version = "2026.5.1"
 dependencies = [
  "serde_json",
  "tauri",
