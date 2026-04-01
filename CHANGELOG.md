@@ -1,5 +1,17 @@
 # Changelog
 
+## [2026.7.0](https://github.com/jonahsnider/dashshund/compare/v2026.6.0...v2026.7.0) (2026-04-01)
+
+
+### Features
+
+* add check for updates item to menu bar ([5b20269](https://github.com/jonahsnider/dashshund/commit/5b202697721be8b19fb08773f0acf552df1c3fe3))
+
+
+### Bug Fixes
+
+* simplify Windows install process ([76b25fd](https://github.com/jonahsnider/dashshund/commit/76b25fdc09fcb05927ac1e8508e59c9d530ca068))
+
 ## [2026.6.0](https://github.com/jonahsnider/dashshund/compare/v2026.5.1...v2026.6.0) (2026-03-31)
 
 
