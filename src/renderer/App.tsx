@@ -8,6 +8,7 @@ import ConnectionStatus from './components/ConnectionStatus.tsx';
 import Settings from './components/Settings.tsx';
 import { createCameraDiscovery } from './lib/cameras.ts';
 import { createNTConnection } from './lib/nt.ts';
+import { updateState } from './lib/updater.ts';
 
 declare const __APP_VERSION__: string;
 
@@ -59,6 +60,20 @@ const App: Component = () => {
 				</div>
 
 				<div class='flex flex-col mt-auto'>
+					<Show when={sidebarOpen() && updateState().status === 'ready'}>
+						<button
+							type='button'
+							class='p-3 text-base uppercase tracking-wider font-bold text-primary hover:bg-primary/10 transition-colors border-t border-outline-variant cursor-pointer'
+							onClick={() => {
+								const state = updateState();
+								if (state.status === 'ready') {
+									state.install();
+								}
+							}}
+						>
+							Restart to update (v{(updateState() as { version: string }).version})
+						</button>
+					</Show>
 					<Show when={sidebarOpen()}>
 						<button
 							type='button'
