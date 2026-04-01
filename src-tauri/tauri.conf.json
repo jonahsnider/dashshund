@@ -29,7 +29,12 @@
 			},
 			"signingIdentity": "-"
 		},
-		"targets": ["dmg", "nsis"]
+		"targets": ["dmg", "nsis"],
+		"windows": {
+			"nsis": {
+				"installMode": "currentUser"
+			}
+		}
 	},
 	"identifier": "com.team581.dashshund",
 	"plugins": {
