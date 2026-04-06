@@ -20,6 +20,8 @@ jobs:
         run: bunx biome migrate --write
       - name: Apply lint fixes
         run: bun run lint:fix
+      - name: Apply fallow fixes
+        run: bun fallow fix
       - name: Run autofix.ci
         uses: autofix-ci/action@v1
         with:

@@ -1,0 +1,15 @@
+{
+	"$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
+	"entry": ["src/renderer/index.tsx"],
+	"ignorePatterns": ["src/renderer/App.css"],
+	"rules": {
+		"unresolved-imports": "off"
+	},
+	"ignoreDependencies": [
+		"@fontsource/geist-mono",
+		"@tailwindcss/vite",
+		"@tauri-apps/cli",
+		"@tauri-apps/plugin-window-state",
+		"vite-plugin-solid"
+	]
+}

@@ -2,7 +2,7 @@ import { getCurrentWindow } from '@tauri-apps/api/window';
 import { check } from '@tauri-apps/plugin-updater';
 import { createSignal } from 'solid-js';
 
-export type UpdateState =
+type UpdateState =
 	| { status: 'idle' }
 	| { status: 'checking' }
 	| { status: 'downloading'; version: string }
