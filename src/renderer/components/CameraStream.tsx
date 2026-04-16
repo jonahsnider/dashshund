@@ -11,6 +11,8 @@ interface CameraStreamProps {
 
 const INITIAL_RETRY_MS = 500;
 const MAX_RETRY_MS = 5000;
+/** How long to wait for an image load before treating it as a stall. */
+const LOAD_TIMEOUT_MS = 3_000;
 /** How often to probe the camera while connected. */
 const HEALTH_CHECK_INTERVAL_MS = 5_000;
 /** How long a health-check probe may take before we consider it failed. */
@@ -34,6 +36,7 @@ const CameraStream: Component<CameraStreamProps> = (props) => {
 
 	let retryMs = INITIAL_RETRY_MS;
 	let retryTimeout: ReturnType<typeof setTimeout> | undefined;
+	let loadTimeout: ReturnType<typeof setTimeout> | undefined;
 	let healthInterval: ReturnType<typeof setInterval> | undefined;
 
 	function updateStatus(s: StreamStatus) {
@@ -44,6 +47,8 @@ const CameraStream: Component<CameraStreamProps> = (props) => {
 	function stopTimers() {
 		clearTimeout(retryTimeout);
 		retryTimeout = undefined;
+		clearTimeout(loadTimeout);
+		loadTimeout = undefined;
 		clearInterval(healthInterval);
 		healthInterval = undefined;
 	}
@@ -53,6 +58,13 @@ const CameraStream: Component<CameraStreamProps> = (props) => {
 		setDisconnectedAt(Date.now());
 		updateStatus('reconnecting');
 		setImgSrc(appendTimestamp(url));
+		// Guard against MJPEG stalls where neither onLoad nor onError fires
+		loadTimeout = setTimeout(() => {
+			loadTimeout = undefined;
+			if (props.url) {
+				retry(props.url);
+			}
+		}, LOAD_TIMEOUT_MS);
 	}
 
 	function retry(url: string) {
@@ -62,6 +74,13 @@ const CameraStream: Component<CameraStreamProps> = (props) => {
 		retryTimeout = setTimeout(() => {
 			setImgSrc(appendTimestamp(url));
 			retryMs = Math.min(retryMs * 2, MAX_RETRY_MS);
+			// Guard against MJPEG stalls where neither onLoad nor onError fires
+			loadTimeout = setTimeout(() => {
+				loadTimeout = undefined;
+				if (props.url) {
+					retry(props.url);
+				}
+			}, LOAD_TIMEOUT_MS);
 		}, retryMs);
 	}
 
@@ -149,6 +168,8 @@ const CameraStream: Component<CameraStreamProps> = (props) => {
 					class='w-full h-full object-contain'
 					classList={{ invisible: status() !== 'connected' }}
 					onLoad={() => {
+						clearTimeout(loadTimeout);
+						loadTimeout = undefined;
 						retryMs = INITIAL_RETRY_MS;
 						setDisconnectedAt(undefined);
 						updateStatus('connected');
