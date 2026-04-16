@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026.7.1](https://github.com/jonahsnider/dashshund/compare/v2026.7.0...v2026.7.1) (2026-04-16)
+
+
+### Bug Fixes
+
+* fix MJPEG streams stalling after network change ([27d8ea7](https://github.com/jonahsnider/dashshund/commit/27d8ea7847cd1ad215e959da0e6b83f797bfdf9b))
+
 ## [2026.7.0](https://github.com/jonahsnider/dashshund/compare/v2026.6.0...v2026.7.0) (2026-04-01)
 
 
