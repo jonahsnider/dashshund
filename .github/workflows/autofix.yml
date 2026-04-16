@@ -21,7 +21,7 @@ jobs:
       - name: Apply lint fixes
         run: bun run lint:fix
       - name: Apply fallow fixes
-        run: bun fallow fix
+        run: bun fallow fix --yes
       - name: Run autofix.ci
         uses: autofix-ci/action@v1
         with:
