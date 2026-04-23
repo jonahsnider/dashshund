@@ -50,7 +50,7 @@ function StatusRow(props: { label: string; value: string; state: 'ok' | 'warn' |
 }
 
 const ConnectionStatus: Component<ConnectionStatusProps> = (props) => {
-	const ntState = () => (props.ntConnected ? 'ok' : 'error') as const;
+	const ntState = (): 'ok' | 'error' => (props.ntConnected ? 'ok' : 'error');
 	const streamState = () => {
 		if (props.streamStatus === 'connected') return 'ok' as const;
 		if (props.streamStatus === 'reconnecting') return 'warn' as const;
