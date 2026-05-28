@@ -29,7 +29,7 @@
 		"url-parse-lax": "^6.0.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.12",
+		"@biomejs/biome": "2.4.16",
 		"@tauri-apps/cli": "^2.10.1",
 		"@types/url-parse-lax": "^5.0.2",
 		"fallow": "^2.14.1",
