@@ -1,5 +1,5 @@
 import { createPolled } from '@solid-primitives/timer';
-import { type Component, createEffect, createMemo, createSignal, on, onCleanup } from 'solid-js';
+import { type Component, createEffect, createMemo, createSignal, on, onCleanup, Show } from 'solid-js';
 
 export type StreamStatus = 'connected' | 'disconnected' | 'reconnecting';
 
@@ -161,7 +161,7 @@ const CameraStream: Component<CameraStreamProps> = (props) => {
 
 	return (
 		<div class='relative w-full h-full flex items-center justify-center'>
-			{imgSrc() ? (
+			<Show when={imgSrc()} fallback={<div class='text-on-surface-variant text-2xl'>No camera URL</div>}>
 				<img
 					src={imgSrc()}
 					alt='Camera stream'
@@ -185,19 +185,21 @@ const CameraStream: Component<CameraStreamProps> = (props) => {
 						}
 					}}
 				/>
-			) : (
-				<div class='text-on-surface-variant text-2xl'>No camera URL</div>
-			)}
-			{status() !== 'connected' && imgSrc() && (
-				<div class='absolute inset-0 flex items-center justify-center'>
-					<div class='text-on-surface-variant text-2xl capitalize'>
-						{status()}
-						{status() === 'reconnecting' && elapsedSec() !== undefined && (
-							<span class='ml-2 tabular-nums'>{elapsedSec()?.toFixed(1)}s</span>
-						)}
+			</Show>
+			<Show when={status() !== 'connected'}>
+				<Show when={imgSrc()}>
+					<div class='absolute inset-0 flex items-center justify-center'>
+						<div class='text-on-surface-variant text-2xl capitalize'>
+							{status()}
+							<Show when={status() === 'reconnecting'}>
+								<Show when={elapsedSec() !== undefined}>
+									<span class='ml-2 tabular-nums'>{elapsedSec()?.toFixed(1)}s</span>
+								</Show>
+							</Show>
+						</div>
 					</div>
-				</div>
-			)}
+				</Show>
+			</Show>
 		</div>
 	);
 };

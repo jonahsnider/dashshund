@@ -9,6 +9,26 @@ interface CameraSelectProps {
 	onSelect: (url: string | undefined) => void;
 }
 
+function parseManualUrl(value: string): string | undefined {
+	const raw = value.trim();
+	if (!raw) return undefined;
+
+	const url = urlParseLax(raw, { https: false });
+	if (!url.port) url.port = '5801';
+	if (url.pathname === '/') url.pathname = '/stream.mjpg';
+	return url.href;
+}
+
+function getCameraUrl(cameras: CameraInfo[], name: string, index: number): string | undefined {
+	const camera = cameras.find((candidate) => candidate.name === name);
+	if (!camera) return undefined;
+	return camera.urls[index] ?? camera.urls[0];
+}
+
+function shouldSelectFirstCamera(useManual: boolean, cameras: CameraInfo[], selectedCamera: string): boolean {
+	return !useManual && cameras.length > 0 && !selectedCamera;
+}
+
 const CameraSelect: Component<CameraSelectProps> = (props) => {
 	const [selectedCamera, setSelectedCamera] = makePersisted(createSignal(''), { name: 'dashshund-camera' });
 	const [urlIndex, setUrlIndex] = makePersisted(createSignal(0), { name: 'dashshund-camera-url-index' });
@@ -17,33 +37,13 @@ const CameraSelect: Component<CameraSelectProps> = (props) => {
 
 	// Emit URL when selection changes
 	createEffect(() => {
-		let url: string | undefined;
-
-		if (useManual()) {
-			const raw = manualUrl().trim();
-			if (raw) {
-				const full = urlParseLax(raw, { https: false });
-				full.port ||= '5801';
-				if (full.pathname === '/') {
-					full.pathname = '/stream.mjpg';
-				}
-				url = full.href ?? undefined;
-			}
-		} else {
-			const cam = props.cameras.find((c) => c.name === selectedCamera());
-			url = cam?.urls[urlIndex()] ?? cam?.urls[0];
-		}
-
+		const url = useManual() ? parseManualUrl(manualUrl()) : getCameraUrl(props.cameras, selectedCamera(), urlIndex());
 		props.onSelect(url);
 	});
 
 	// Reset selection when the saved camera doesn't exist in the available list
 	createEffect(() => {
-		if (useManual() || !props.cameras.length) return;
-
-		const name = selectedCamera();
-		if (!name) {
-			// No selection — auto-select the first camera
+		if (shouldSelectFirstCamera(useManual(), props.cameras, selectedCamera())) {
 			setSelectedCamera(props.cameras[0]?.name);
 		}
 	});
