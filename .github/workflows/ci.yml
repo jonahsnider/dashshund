@@ -22,6 +22,6 @@ jobs:
       - name: Lint
         run: bun run lint
       - name: Detect unused code
-        uses: fallow-rs/fallow@v2
+        uses: fallow-rs/fallow@v3
       - name: Build frontend
         run: bun run build:frontend
