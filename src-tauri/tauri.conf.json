@@ -14,8 +14,8 @@
 		]
 	},
 	"build": {
-		"beforeBuildCommand": "bun vite build",
-		"beforeDevCommand": "bun vite dev",
+		"beforeBuildCommand": "pnpm vite build",
+		"beforeDevCommand": "pnpm vite dev",
 		"devUrl": "http://localhost:5173",
 		"frontendDist": "../dist-renderer"
 	},

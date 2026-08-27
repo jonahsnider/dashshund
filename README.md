@@ -20,11 +20,11 @@ Or you can download the latest release from the [GitHub releases page](https://g
 
 ```sh
 # Install dependencies
-bun install
+pnpm install
 
 # Run the dev server
-bun run dev
+pnpm dev
 
 # Run a full build
-bun run build
+pnpm build
 ```
