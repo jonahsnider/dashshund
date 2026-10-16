@@ -19,9 +19,10 @@ jobs:
         uses: pnpm/setup@v2
         with:
           cache: true
-      - name: Lint
-        run: pnpm lint
-      - name: Detect unused code
-        uses: fallow-rs/fallow@v3
-      - name: Build frontend
-        run: pnpm build:frontend
+      - parallel:
+          - name: Lint
+            run: pnpm lint
+          - name: Detect unused code
+            uses: fallow-rs/fallow@v3
+          - name: Build frontend
+            run: pnpm build:frontend
