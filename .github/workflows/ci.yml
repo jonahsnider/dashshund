@@ -19,6 +19,8 @@ jobs:
         uses: pnpm/setup@v2
         with:
           cache: true
+      - name: Add npm global binaries to PATH
+        run: echo "$(npm prefix --global)/bin" >> "$GITHUB_PATH"
       - parallel:
           - name: Lint
             run: pnpm lint
