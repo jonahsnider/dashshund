@@ -25,6 +25,6 @@ jobs:
           - name: Lint
             run: pnpm lint
           - name: Detect unused code
-            uses: fallow-rs/fallow@v3.34.0
+            uses: fallow-rs/fallow@v3.34.1
           - name: Build frontend
             run: pnpm build:frontend
