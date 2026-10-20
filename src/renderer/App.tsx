@@ -1,7 +1,7 @@
 import { makePersisted } from '@solid-primitives/storage';
 import { getCurrentWindow } from '@tauri-apps/api/window';
 import { NetworkTables } from 'ntcore-ts-client';
-import { type Component, createEffect, createSignal, on, Show } from 'solid-js';
+import { type Component, createEffect, createSignal, on, Show, type Signal } from 'solid-js';
 import CameraSelect from './components/CameraSelect.tsx';
 import CameraStream, { type StreamStatus } from './components/CameraStream.tsx';
 import ConnectionStatus from './components/ConnectionStatus.tsx';
@@ -13,14 +13,18 @@ import { updateState } from './lib/updater.ts';
 declare const __APP_VERSION__: string;
 
 const App: Component = () => {
-	const [teamNumber, setTeamNumber] = makePersisted(createSignal(581), { name: 'dashshund-team-number' });
+	const [teamNumber, setTeamNumber] = makePersisted<number, Signal<number>>(createSignal(581), {
+		name: 'dashshund-team-number',
+	});
 	const [nt, setNt] = createSignal<NetworkTables>(NetworkTables.getInstanceByTeam(teamNumber()));
 	const [streamUrl, setStreamUrl] = createSignal<string | undefined>();
 	const [streamStatus, setStreamStatus] = createSignal<StreamStatus>('disconnected');
-	const [sidebarOpen, setSidebarOpen] = makePersisted(createSignal(true), { name: 'dashshund-sidebar-open' });
+	const [sidebarOpen, setSidebarOpen] = makePersisted<boolean, Signal<boolean>>(createSignal(true), {
+		name: 'dashshund-sidebar-open',
+	});
 	const [fullscreen, setFullscreen] = createSignal(false);
 	const appWindow = getCurrentWindow();
-	appWindow.onResized(async () => {
+	void appWindow.onResized(async () => {
 		setFullscreen(await appWindow.isFullscreen());
 	});
 
@@ -67,7 +71,7 @@ const App: Component = () => {
 							onClick={() => {
 								const state = updateState();
 								if (state.status === 'ready') {
-									state.install();
+									void state.install();
 								}
 							}}
 						>

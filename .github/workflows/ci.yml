@@ -7,7 +7,7 @@ permissions:
 
 jobs:
   build-and-lint:
-    name: Build and lint
+    name: Build and check
 
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -16,15 +16,15 @@ jobs:
       - name: Checkout git repository
         uses: actions/checkout@v7
       - name: Setup pnpm
-        uses: pnpm/setup@v2
+        uses: pnpm/setup@v3
         with:
           cache: true
-      - name: Add npm global binaries to PATH
-        run: echo "$(npm prefix --global)/bin" >> "$GITHUB_PATH"
       - parallel:
+          - name: Check formatting
+            run: pnpm format
           - name: Lint
             run: pnpm lint
-          - name: Detect unused code
+          - name: Check unused code and dependencies
             uses: fallow-rs/fallow@v3.34.1
           - name: Build frontend
             run: pnpm build:frontend

@@ -1,6 +1,6 @@
 import { makePersisted } from '@solid-primitives/storage';
 import { MdFillCheck } from 'solid-icons/md';
-import { type Component, createEffect, createSignal, For, Show } from 'solid-js';
+import { type Component, createEffect, createSignal, For, Show, type Signal } from 'solid-js';
 import urlParseLax from 'url-parse-lax';
 import type { CameraInfo } from '../lib/cameras.ts';
 
@@ -16,7 +16,7 @@ function parseManualUrl(value: string): string | undefined {
 	const url = urlParseLax(raw, { https: false });
 	if (!url.port) url.port = '5801';
 	if (url.pathname === '/') url.pathname = '/stream.mjpg';
-	return url.href;
+	return url.href ?? undefined;
 }
 
 function getCameraUrl(cameras: CameraInfo[], name: string, index: number): string | undefined {
@@ -30,10 +30,18 @@ function shouldSelectFirstCamera(useManual: boolean, cameras: CameraInfo[], sele
 }
 
 const CameraSelect: Component<CameraSelectProps> = (props) => {
-	const [selectedCamera, setSelectedCamera] = makePersisted(createSignal(''), { name: 'dashshund-camera' });
-	const [urlIndex, setUrlIndex] = makePersisted(createSignal(0), { name: 'dashshund-camera-url-index' });
-	const [manualUrl, setManualUrl] = makePersisted(createSignal(''), { name: 'dashshund-camera-manual-url' });
-	const [useManual, setUseManual] = makePersisted(createSignal(false), { name: 'dashshund-camera-use-manual' });
+	const [selectedCamera, setSelectedCamera] = makePersisted<string, Signal<string>>(createSignal(''), {
+		name: 'dashshund-camera',
+	});
+	const [urlIndex, setUrlIndex] = makePersisted<number, Signal<number>>(createSignal(0), {
+		name: 'dashshund-camera-url-index',
+	});
+	const [manualUrl, setManualUrl] = makePersisted<string, Signal<string>>(createSignal(''), {
+		name: 'dashshund-camera-manual-url',
+	});
+	const [useManual, setUseManual] = makePersisted<boolean, Signal<boolean>>(createSignal(false), {
+		name: 'dashshund-camera-use-manual',
+	});
 
 	// Emit URL when selection changes
 	createEffect(() => {

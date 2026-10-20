@@ -6,12 +6,11 @@ import App from './App.tsx';
 import { checkForUpdates } from './lib/updater.ts';
 
 if (type() === 'windows') {
-	checkForUpdates();
+	void checkForUpdates();
 
-	getCurrentWindow().listen('check-for-updates', () => {
-		checkForUpdates();
+	void getCurrentWindow().listen('check-for-updates', () => {
+		void checkForUpdates();
 	});
 }
 
-// biome-ignore lint/style/noNonNullAssertion: root element always exists
 render(() => <App />, document.getElementById('root')!);

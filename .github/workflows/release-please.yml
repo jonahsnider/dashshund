@@ -44,7 +44,7 @@ jobs:
       - name: Checkout git repository
         uses: actions/checkout@v7
       - name: Setup pnpm
-        uses: pnpm/setup@v2
+        uses: pnpm/setup@v3
         with:
           cache: true
       - name: Setup Rust

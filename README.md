@@ -19,6 +19,9 @@ Or you can download the latest release from the [GitHub releases page](https://g
 ## Development
 
 ```sh
+# Install the tool versions declared by the project (requires mise)
+mise install
+
 # Install dependencies
 pnpm install
 
@@ -28,3 +31,6 @@ pnpm dev
 # Run a full build
 pnpm build
 ```
+
+Run `pnpm format`, `pnpm lint`, `pnpm exec fallow`, and `pnpm build:frontend` for the checks used in CI.
+Use `pnpm format:fix` and `pnpm lint:fix` to apply automatic fixes.

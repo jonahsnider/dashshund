@@ -5,11 +5,5 @@
 	"rules": {
 		"unresolved-imports": "off"
 	},
-	"ignoreDependencies": [
-		"@fontsource/geist-mono",
-		"@tailwindcss/vite",
-		"@tauri-apps/cli",
-		"@tauri-apps/plugin-window-state",
-		"vite-plugin-solid"
-	]
+	"ignoreDependencies": ["@fontsource/geist-mono", "@tailwindcss/vite", "@tauri-apps/cli", "vite-plugin-solid"]
 }

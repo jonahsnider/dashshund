@@ -1,13 +1,13 @@
-@import "@fontsource/geist-mono/400.css";
-@import "@fontsource/geist-mono/500.css";
-@import "@fontsource/geist-mono/600.css";
-@import "@fontsource/geist-mono/700.css";
-@import "@fontsource/geist-mono/800.css";
-@import "tailwindcss";
+@import '@fontsource/geist-mono/400.css';
+@import '@fontsource/geist-mono/500.css';
+@import '@fontsource/geist-mono/600.css';
+@import '@fontsource/geist-mono/700.css';
+@import '@fontsource/geist-mono/800.css';
+@import 'tailwindcss';
 
 @layer base {
 	body {
-		font-family: "Geist Mono", "Courier New", monospace;
+		font-family: 'Geist Mono', 'Courier New', monospace;
 	}
 }
 

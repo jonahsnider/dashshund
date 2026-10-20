@@ -1,0 +1,15 @@
+{
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"singleQuote": true,
+	"jsxSingleQuote": true,
+	"useTabs": true,
+	"printWidth": 120,
+	"ignorePatterns": [
+		".agents/**",
+		".claude/**",
+		"assets/mac.icon/**",
+		"skills-lock.json",
+		"CHANGELOG.md",
+		"src-tauri/CHANGELOG.md"
+	]
+}

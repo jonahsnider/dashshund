@@ -1,12 +1,12 @@
 import { makePersisted } from '@solid-primitives/storage';
-import { type Component, createSignal } from 'solid-js';
+import { type Component, createSignal, type Signal } from 'solid-js';
 
 interface SettingsProps {
 	onTeamChange: (team: number) => void;
 }
 
 const Settings: Component<SettingsProps> = (props) => {
-	const [team, setTeam] = makePersisted(createSignal(581), { name: 'dashshund-team-number' });
+	const [team, setTeam] = makePersisted<number, Signal<number>>(createSignal(581), { name: 'dashshund-team-number' });
 
 	function handleInput(e: InputEvent & { currentTarget: HTMLInputElement }) {
 		const num = Number(e.currentTarget.value);

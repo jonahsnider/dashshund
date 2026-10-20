@@ -30,7 +30,7 @@ async function downloadUpdate(update: AvailableUpdate): Promise<void> {
 
 	setUpdateState({ status: 'ready', version: update.version, install });
 
-	getCurrentWindow().onCloseRequested(async () => {
+	void getCurrentWindow().onCloseRequested(async () => {
 		await update.install();
 	});
 }
