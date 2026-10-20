@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026.7.2](https://github.com/jonahsnider/dashshund/compare/v2026.7.1...v2026.7.2) (2026-10-20)
+
+
+### Bug Fixes
+
+* **ci:** preserve required status check name ([d82e753](https://github.com/jonahsnider/dashshund/commit/d82e7537dfb912f7632d6c735d00cb9b31ff00e4))
+
 ## [2026.7.1](https://github.com/jonahsnider/dashshund/compare/v2026.7.0...v2026.7.1) (2026-04-16)
 
 
