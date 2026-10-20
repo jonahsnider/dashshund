@@ -7,7 +7,7 @@ permissions:
 
 jobs:
   build-and-lint:
-    name: Build and lint
+    name: Build and check
 
     runs-on: ubuntu-latest
     timeout-minutes: 5
