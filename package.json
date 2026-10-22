@@ -32,7 +32,7 @@
 		"url-parse-lax": "6.0.0"
 	},
 	"devDependencies": {
-		"@tauri-apps/cli": "2.12.3",
+		"@tauri-apps/cli": "2.12.4",
 		"@types/node": "24.19.2",
 		"@types/url-parse-lax": "5.0.2",
 		"fallow": "3.34.1",
