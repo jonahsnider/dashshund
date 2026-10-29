@@ -33,7 +33,7 @@
 	},
 	"devDependencies": {
 		"@tauri-apps/cli": "2.12.3",
-		"@types/node": "24.19.2",
+		"@types/node": "26.6.6",
 		"@types/url-parse-lax": "5.0.2",
 		"fallow": "3.34.1",
 		"oxfmt": "0.74.0",
@@ -46,7 +46,7 @@
 	"devEngines": {
 		"runtime": {
 			"name": "node",
-			"version": "24.x",
+			"version": "26.x",
 			"onFail": "warn"
 		}
 	},
