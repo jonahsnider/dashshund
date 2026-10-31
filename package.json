@@ -27,7 +27,7 @@
 		"@tauri-apps/plugin-updater": "2.14.0",
 		"ntcore-ts-client": "3.1.3",
 		"solid-icons": "1.2.0",
-		"solid-js": "1.9.17",
+		"solid-js": "1.9.18",
 		"tailwindcss": "4.3.3",
 		"url-parse-lax": "6.0.0"
 	},
