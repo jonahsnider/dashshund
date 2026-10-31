@@ -41,7 +41,7 @@
 		"oxlint-tsgolint": "7.0.2004",
 		"typescript": "7.0.2",
 		"vite": "8.3.4",
-		"vite-plugin-solid": "2.11.14"
+		"vite-plugin-solid": "2.11.15"
 	},
 	"devEngines": {
 		"runtime": {

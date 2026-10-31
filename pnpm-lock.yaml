@@ -234,8 +234,8 @@ importers:
         specifier: 8.3.4
         version: 8.3.4(@types/node@24.19.2)(jiti@2.7.0)
       vite-plugin-solid:
-        specifier: 2.11.14
-        version: 2.11.14(solid-js@1.9.17)(vite@8.3.4(@types/node@24.19.2)(jiti@2.7.0))
+        specifier: 2.11.15
+        version: 2.11.15(solid-js@1.9.17)(vite@8.3.4(@types/node@24.19.2)(jiti@2.7.0))
 
 packages:
 
@@ -1529,8 +1529,8 @@ packages:
     resolution: {integrity: sha512-4/hrYP8tlNQc0LH8K4dOPdGkM8DbbVGYr311d/BMq+fKp23aqJ5F4tQzUaWyaLOhtU0hgVwGVoi/XYNf35izrg==}
     engines: {node: '>=20'}
 
-  vite-plugin-solid@2.11.14:
-    resolution: {integrity: sha512-7ZVBt8rpoyqmlwin2kRIUveaHoF6/kulY7gsnD+qFh4nS29V4OPAnw+ojoAspXIjObiL9o1xh9a/nTuYHm02Rw==}
+  vite-plugin-solid@2.11.15:
+    resolution: {integrity: sha512-twDNPdUDbhem+UOXVu5PyRJvwHFmxSJ3+NxbCgT9iFL42EmWS7lBfFskVM/HXLwd86fh1BgHKJBfGCWkTu2zEg==}
     peerDependencies:
       '@testing-library/jest-dom': ^5.16.6 || ^5.17.0 || ^6.0.0 || ^7.0.0
       solid-js: ^1.7.2
@@ -2579,7 +2579,7 @@ snapshots:
     dependencies:
       prepend-http: 4.0.0
 
-  vite-plugin-solid@2.11.14(solid-js@1.9.17)(vite@8.3.4(@types/node@24.19.2)(jiti@2.7.0)):
+  vite-plugin-solid@2.11.15(solid-js@1.9.17)(vite@8.3.4(@types/node@24.19.2)(jiti@2.7.0)):
     dependencies:
       '@babel/core': 7.29.7
       '@types/babel__core': 7.20.5
