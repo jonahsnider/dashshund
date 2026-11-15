@@ -36,7 +36,7 @@
 		"@tauri-apps/cli": "2.12.4",
 		"@types/node": "26.6.6",
 		"@types/url-parse-lax": "5.0.2",
-		"fallow": "3.43.0",
+		"fallow": "3.43.1",
 		"oxfmt": "0.78.0",
 		"oxlint": "1.93.0",
 		"oxlint-tsgolint": "7.0.2007",
