@@ -10,11 +10,11 @@
 		"build:frontend": "pnpm typecheck && vite build",
 		"dev": "pnpm tauri dev",
 		"dev:frontend": "vite dev",
+		"format": "oxfmt --check",
+		"format:fix": "oxfmt",
 		"generate-icons": "tauri icon assets/logo.svg",
 		"lint": "oxlint",
 		"lint:fix": "oxlint --fix",
-		"format": "oxfmt --check",
-		"format:fix": "oxfmt",
 		"typecheck": "tsc -b"
 	},
 	"dependencies": {
@@ -24,6 +24,7 @@
 		"@tailwindcss/vite": "4.3.5",
 		"@tauri-apps/api": "2.12.4",
 		"@tauri-apps/plugin-os": "2.4.0",
+		"@tauri-apps/plugin-process": "2.4.0",
 		"@tauri-apps/plugin-updater": "2.14.1",
 		"ntcore-ts-client": "3.1.3",
 		"solid-icons": "1.2.0",

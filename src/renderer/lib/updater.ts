@@ -1,4 +1,5 @@
 import { getCurrentWindow } from '@tauri-apps/api/window';
+import { relaunch } from '@tauri-apps/plugin-process';
 import { check } from '@tauri-apps/plugin-updater';
 import { createSignal } from 'solid-js';
 
@@ -26,6 +27,8 @@ async function downloadUpdate(update: AvailableUpdate): Promise<void> {
 
 	const install = async () => {
 		await update.install();
+		// Windows exits during install, macOS needs a manual relaunch
+		await relaunch();
 	};
 
 	setUpdateState({ status: 'ready', version: update.version, install });

@@ -5,7 +5,7 @@ import './App.css';
 import App from './App.tsx';
 import { checkForUpdates } from './lib/updater.ts';
 
-if (type() === 'windows') {
+if (type() === 'windows' || type() === 'macos') {
 	void checkForUpdates();
 
 	void getCurrentWindow().listen('check-for-updates', () => {

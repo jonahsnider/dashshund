@@ -26,10 +26,9 @@
 		"macOS": {
 			"files": {
 				"Resources/AppIcon.icon": "../assets/mac.icon"
-			},
-			"signingIdentity": "-"
+			}
 		},
-		"targets": ["dmg", "nsis"],
+		"targets": ["app", "dmg", "nsis"],
 		"windows": {
 			"nsis": {
 				"installMode": "currentUser"

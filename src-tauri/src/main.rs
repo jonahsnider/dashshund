@@ -9,8 +9,9 @@ fn main() {
         .plugin(tauri_plugin_window_state::Builder::new().build())
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_os::init())
+        .plugin(tauri_plugin_process::init())
         .setup(|app| {
-            #[cfg(target_os = "windows")]
+            #[cfg(any(target_os = "windows", target_os = "macos"))]
             app.handle()
                 .plugin(tauri_plugin_updater::Builder::new().build())?;
 
@@ -18,7 +19,7 @@ fn main() {
             let mut app_submenu = SubmenuBuilder::new(app, "Dashshund")
                 .about(Some(AboutMetadataBuilder::new().build()));
 
-            #[cfg(target_os = "windows")]
+            #[cfg(any(target_os = "windows", target_os = "macos"))]
             {
                 app_submenu = app_submenu.text("check-for-updates", "Check for Updates");
             }
