@@ -12,9 +12,9 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout git repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - name: Setup pnpm
-        uses: pnpm/setup@v3
+        uses: pnpm/setup@731dfb6463bbd11c11fd0ee11fe00ed0e36d48a1 # v3
         with:
           cache: true
       - name: Apply formatting fixes
@@ -26,6 +26,6 @@ jobs:
       - name: Apply fallow fixes
         run: pnpm exec fallow fix --yes
       - name: Run autofix.ci
-        uses: autofix-ci/action@v1
+        uses: autofix-ci/action@c5b2d67aa2274e7b5a18224e8171550871fc7e4a # v1
         with:
           commit-message: 'refactor: apply automatic fixes'
