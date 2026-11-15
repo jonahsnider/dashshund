@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026.8.0](https://github.com/jonahsnider/dashshund/compare/v2026.7.1...v2026.8.0) (2026-11-15)
+
+
+### Features
+
+* auto update on macOS ([837204b](https://github.com/jonahsnider/dashshund/commit/837204b4a6b12d9bc8babe7b2f07dbaf74d1183a))
+
 ## [2026.7.1](https://github.com/jonahsnider/dashshund/compare/v2026.7.0...v2026.7.1) (2026-04-16)
 
 
