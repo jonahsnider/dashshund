@@ -7,14 +7,6 @@
 
 * auto update on macOS ([837204b](https://github.com/jonahsnider/dashshund/commit/837204b4a6b12d9bc8babe7b2f07dbaf74d1183a))
 
-
-### Bug Fixes
-
-* **ci:** preserve required status check name ([d82e753](https://github.com/jonahsnider/dashshund/commit/d82e7537dfb912f7632d6c735d00cb9b31ff00e4))
-* **ci:** restore npm global bin path for fallow ([8ff86d0](https://github.com/jonahsnider/dashshund/commit/8ff86d0d4e580ed7e8fb51ce9cf1f06d4bdeea63))
-* **deps:** update dependency @tauri-apps/plugin-updater to v2.14.1 ([#69](https://github.com/jonahsnider/dashshund/issues/69)) ([af076e0](https://github.com/jonahsnider/dashshund/commit/af076e0f02f4ce5470bc980d8d6556b9849c18ec))
-* **deps:** update dependency solid-js to v1.9.18 ([#70](https://github.com/jonahsnider/dashshund/issues/70)) ([f9e5c69](https://github.com/jonahsnider/dashshund/commit/f9e5c690f613a7034775de9080faa8c10abfd49c))
-
 ## [2026.7.1](https://github.com/jonahsnider/dashshund/compare/v2026.7.0...v2026.7.1) (2026-04-16)
 
 
