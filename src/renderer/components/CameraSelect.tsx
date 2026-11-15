@@ -13,10 +13,10 @@ function parseManualUrl(value: string): string | undefined {
 	const raw = value.trim();
 	if (!raw) return undefined;
 
-	const url = urlParseLax(raw, { https: false });
+	const url = new URL(String(urlParseLax(raw, { https: false }).href));
 	if (!url.port) url.port = '5801';
 	if (url.pathname === '/') url.pathname = '/stream.mjpg';
-	return url.href ?? undefined;
+	return url.href;
 }
 
 function getCameraUrl(cameras: CameraInfo[], name: string, index: number): string | undefined {
