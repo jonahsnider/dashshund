@@ -22,7 +22,7 @@
 		"@solid-primitives/storage": "4.4.0",
 		"@solid-primitives/timer": "1.4.4",
 		"@tailwindcss/vite": "4.3.5",
-		"@tauri-apps/api": "2.12.4",
+		"@tauri-apps/api": "2.12.5",
 		"@tauri-apps/plugin-os": "2.4.0",
 		"@tauri-apps/plugin-process": "2.4.0",
 		"@tauri-apps/plugin-updater": "2.14.1",
@@ -33,7 +33,7 @@
 		"url-parse-lax": "6.0.0"
 	},
 	"devDependencies": {
-		"@tauri-apps/cli": "2.12.4",
+		"@tauri-apps/cli": "2.12.5",
 		"@types/node": "26.6.6",
 		"@types/url-parse-lax": "5.0.2",
 		"fallow": "3.43.1",
