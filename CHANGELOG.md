@@ -1,5 +1,14 @@
 # Changelog
 
+## [2026.8.1](https://github.com/jonahsnider/dashshund/compare/v2026.8.0...v2026.8.1) (2026-11-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency solid-icons to v2 ([#79](https://github.com/jonahsnider/dashshund/issues/79)) ([174969e](https://github.com/jonahsnider/dashshund/commit/174969e2c24fc0f3968db4f2ab134dd9c3b56c6f))
+* **deps:** update dependency solid-js to v1.9.20 ([ec2b445](https://github.com/jonahsnider/dashshund/commit/ec2b445dcfc9a577d5f500066bbd2202195a5a1b))
+* **deps:** update tauri monorepo to v2.12.5 ([f50deec](https://github.com/jonahsnider/dashshund/commit/f50deec55754f9a26163d0b873719c26b784cef2))
+
 ## [2026.8.0](https://github.com/jonahsnider/dashshund/compare/v2026.7.1...v2026.8.0) (2026-11-15)
 
 
