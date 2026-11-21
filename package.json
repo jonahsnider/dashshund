@@ -20,7 +20,7 @@
 	"dependencies": {
 		"@fontsource/geist-mono": "5.3.0",
 		"@solid-primitives/storage": "4.4.0",
-		"@solid-primitives/timer": "1.4.4",
+		"@solid-primitives/timer": "1.4.5",
 		"@tailwindcss/vite": "4.3.5",
 		"@tauri-apps/api": "2.12.5",
 		"@tauri-apps/plugin-os": "2.4.0",
