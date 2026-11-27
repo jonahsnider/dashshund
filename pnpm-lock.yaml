@@ -192,8 +192,8 @@ importers:
         specifier: 5.3.0
         version: 5.3.0
       '@solid-primitives/storage':
-        specifier: 4.4.0
-        version: 4.4.0(solid-js@1.9.20)
+        specifier: 5.0.1
+        version: 5.0.1(@solidjs/web@2.0.4(solid-js@1.9.20))(solid-js@1.9.20)
       '@solid-primitives/timer':
         specifier: 1.4.4
         version: 1.4.4(solid-js@1.9.20)
@@ -809,16 +809,14 @@ packages:
   '@rolldown/pluginutils@1.0.1':
     resolution: {integrity: sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==}
 
-  '@solid-primitives/storage@4.4.0':
-    resolution: {integrity: sha512-+u0dpTqrUG7h+IMfmGLCx7vx2Q0Eon6paBgzcWhEP/dauElpGU3ElpZZOZgw8YKR1+J4X4ENiAL0na3VH8RWMg==}
+  '@solid-primitives/storage@5.0.1':
+    resolution: {integrity: sha512-euC7xJ/skaiAbgv3k6wmM7I6IuEpsp55CKCwx01XT4kN1Y5EKj50Duce/h0QifmHAyT+7ZCq/7x442ml0R1R+Q==}
     peerDependencies:
+      '@solidjs/web': ^2.0.0
       '@tauri-apps/plugin-store': '*'
-      solid-js: ^1.6.12
-      solid-start: '*'
+      solid-js: ^2.0.0
     peerDependenciesMeta:
       '@tauri-apps/plugin-store':
-        optional: true
-      solid-start:
         optional: true
 
   '@solid-primitives/timer@1.4.4':
@@ -826,10 +824,17 @@ packages:
     peerDependencies:
       solid-js: ^1.6.12
 
-  '@solid-primitives/utils@6.4.1':
-    resolution: {integrity: sha512-ISSB5QX1qP2ynrheIpYwc4oKR5Ny4siNuUyf1qZniy+Il+p/PtDB0QK1Dnle8noiHpwRD3gpPdubOC3qI/Zamg==}
+  '@solid-primitives/utils@7.0.1':
+    resolution: {integrity: sha512-g5gcdsAF/lI2Pa/U+Hrj4FzE2CUCQiu7QCFcNrmX8jAPJvf8qOOYEA3DjcHHUCcIW2HSo9T5MEXkfYdZ9m5J4w==}
     peerDependencies:
-      solid-js: ^1.6.12
+      '@solidjs/web': ^2.0.0
+      solid-js: ^2.0.0
+
+  '@solidjs/web@2.0.4':
+    resolution: {integrity: sha512-E7bEnI/+z5Lj8fthibMbud8zXbdn5fc0/QJpC4kruxmVIwj/FyrkgiMVqfBmILjaYtKXD3QNEZCKyTV3agbH5A==}
+    engines: {node: '>=22.12.0'}
+    peerDependencies:
+      solid-js: ^2.0.4
 
   '@tailwindcss/node@4.3.5':
     resolution: {integrity: sha512-yT53FzV4ke0cr/BguDxhWMpm5MJu1O2muzk+tKw6lKHjODAsYArBbWwFbJiaksfzFv1tpkO9QHGzmfs1hJT66g==}
@@ -1445,9 +1450,19 @@ packages:
     peerDependencies:
       seroval: ^1.0
 
+  seroval-plugins@1.8.0:
+    resolution: {integrity: sha512-96vBb12rDvPPwdKUgWw1op3fGq8AVBFOr0IllbnM72yR5J9WWXF18cQ4g1XfDO7HCyh2dt70P3XdtyRayP8FWg==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      seroval: ^1.8.0
+
   seroval@1.6.12:
     resolution: {integrity: sha512-CqbIVfk/7GL3ITwZI55lcPbpQbjHZ2DD5cUj4iH7E9YsCfHNJV1mx7yNp86Z84w5IpmkZZS/2s5vPOWmVWSdQg==}
     engines: {node: '>=10'}
+
+  seroval@1.8.2:
+    resolution: {integrity: sha512-zmMxi/9MdLK1MKazLmIP6Rk39RuK0Xydd+QHeOYntS37olJeTjB3+nwVj4ce/ZWiZJeRhcO5htfxt0mUzQBscQ==}
+    engines: {node: '>=20'}
 
   solid-icons@2.0.0:
     resolution: {integrity: sha512-18EVoC5hM3aC9FJ/5H+3DTymRNiRjpMYbbdgok4G+L3/aWTyWZ4IoKcOfF3Um4v0I0CdnlI2t4lP8hqU6ENS+Q==}
@@ -1954,17 +1969,26 @@ snapshots:
 
   '@rolldown/pluginutils@1.0.1': {}
 
-  '@solid-primitives/storage@4.4.0(solid-js@1.9.20)':
+  '@solid-primitives/storage@5.0.1(@solidjs/web@2.0.4(solid-js@1.9.20))(solid-js@1.9.20)':
     dependencies:
-      '@solid-primitives/utils': 6.4.1(solid-js@1.9.20)
+      '@solid-primitives/utils': 7.0.1(@solidjs/web@2.0.4(solid-js@1.9.20))(solid-js@1.9.20)
+      '@solidjs/web': 2.0.4(solid-js@1.9.20)
       solid-js: 1.9.20
 
   '@solid-primitives/timer@1.4.4(solid-js@1.9.20)':
     dependencies:
       solid-js: 1.9.20
 
-  '@solid-primitives/utils@6.4.1(solid-js@1.9.20)':
+  '@solid-primitives/utils@7.0.1(@solidjs/web@2.0.4(solid-js@1.9.20))(solid-js@1.9.20)':
     dependencies:
+      '@solidjs/web': 2.0.4(solid-js@1.9.20)
+      solid-js: 1.9.20
+
+  '@solidjs/web@2.0.4(solid-js@1.9.20)':
+    dependencies:
+      csstype: 3.2.3
+      seroval: 1.8.2
+      seroval-plugins: 1.8.0(seroval@1.8.2)
       solid-js: 1.9.20
 
   '@tailwindcss/node@4.3.5':
@@ -2463,7 +2487,13 @@ snapshots:
     dependencies:
       seroval: 1.6.12
 
+  seroval-plugins@1.8.0(seroval@1.8.2):
+    dependencies:
+      seroval: 1.8.2
+
   seroval@1.6.12: {}
+
+  seroval@1.8.2: {}
 
   solid-icons@2.0.0(solid-js@1.9.20):
     dependencies:
